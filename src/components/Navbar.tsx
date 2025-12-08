@@ -18,12 +18,12 @@ export default function Navbar({ user }: { user?: { name: string; avatar: string
   ];
 
   return (
-    <nav className="w-full bg-bg shadow-md fixed top-0 z-50">
+    <nav className="w-full bg-bgs shadow-md fixed top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="text-2xl font-bold text-primary">
+            <Link href="/" className="text-2xl font-bold text-primarys">
               MyShop
             </Link>
           </div>
@@ -35,8 +35,8 @@ export default function Navbar({ user }: { user?: { name: string; avatar: string
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-medium transition-colors ${
-                  pathname === link.href ? "text-primary" : "text-muted"
-                } hover:text-primary`}
+                  pathname === link.href ? "text-primarys" : "text-muteds"
+                } hover:text-primarys`}
               >
                 {link.name}
               </Link>
@@ -62,16 +62,16 @@ export default function Navbar({ user }: { user?: { name: string; avatar: string
                 </button>
                 {/* Dropdown */}
                 {dropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg py-2">
+                  <div className="absolute right-0 mt-2 w-40 bg-bgs border rounded-lg shadow-lg py-2">
                     <Link
                       href="/dashboard"
-                      className="block px-4 py-2 text-sm text-text hover:bg-primary hover:text-white"
+                      className="block px-4 py-2 text-sm text-texts hover:bg-primarys hover:text-texts"
                       onClick={() => setDropdownOpen(false)}
                     >
                       Dashboard
                     </Link>
                     <button
-                      className="w-full text-left px-4 py-2 text-sm text-text hover:bg-red-500 hover:text-white"
+                      className="w-full text-left px-4 py-2 text-sm text-texts hover:bg-red-500 hover:text-texts"
                       onClick={() => {
                         setDropdownOpen(false);
                         console.log("Logout"); // replace with logout function
@@ -85,7 +85,7 @@ export default function Navbar({ user }: { user?: { name: string; avatar: string
             ) : (
               <Link
                 href="/login"
-                className="px-4 py-2 text-white bg-primary rounded-lg hover:opacity-90 transition"
+                className="px-4 py-2 text-texts bg-primarys rounded-lg hover:opacity-90 transition"
               >
                 Login
               </Link>
@@ -95,7 +95,7 @@ export default function Navbar({ user }: { user?: { name: string; avatar: string
             <div className="md:hidden">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-primary hover:text-white hover:bg-primary transition"
+                className="inline-flex items-center justify-center p-2 rounded-md text-primarys hover:text-texts hover:bg-primarys transition"
               >
                 <span className="sr-only">Open main menu</span>
                 {mobileMenuOpen ? (
@@ -127,15 +127,15 @@ export default function Navbar({ user }: { user?: { name: string; avatar: string
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
+        <div className="md:hidden bg-texts border-t border-texts">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  pathname === link.href ? "text-primary" : "text-muted"
-                } hover:text-primary`}
+                  pathname === link.href ? "text-primarys" : "text-muteds"
+                } hover:text-primarys`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
@@ -144,7 +144,7 @@ export default function Navbar({ user }: { user?: { name: string; avatar: string
             {!user && (
               <Link
                 href="/login"
-                className="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary hover:opacity-90"
+                className="block px-3 py-2 rounded-md text-base font-medium text-texts bg-primarys hover:opacity-90"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Login

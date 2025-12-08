@@ -31,9 +31,9 @@ const categories = [
 
 export default function CategoryGrid() {
   return (
-    <section className="py-10 bg-[var(--bg,#F8FAFC)]">
+    <section className="py-10 bg-bgs">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <h2 className="text-2xl md:text-3xl font-bold text-[var(--text,#1E293B)] mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-texts mb-6">
           Shop by Category
         </h2>
 
@@ -41,7 +41,7 @@ export default function CategoryGrid() {
           {categories.map((cat, i) => (
             <div
               key={i}
-              className="group cursor-pointer rounded-xl shadow hover:shadow-lg bg-white transition overflow-hidden border border-gray-200"
+              className="group cursor-pointer rounded-xl shadow hover:shadow-lg bg-secondarys transition overflow-hidden border border-texts"
             >
               <div className="relative h-24 md:h-32 w-full">
                 <Image
@@ -53,7 +53,7 @@ export default function CategoryGrid() {
               </div>
 
               <div className="p-2 md:p-3 text-center">
-                <p className="text-sm md:text-base font-medium text-[var(--text,#1E293B)]">
+                <p className="text-sm md:text-base font-medium text-texts">
                   {cat.title}
                 </p>
               </div>

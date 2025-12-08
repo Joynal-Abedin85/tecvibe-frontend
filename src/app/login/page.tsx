@@ -23,11 +23,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-bg px-4 py-10">
+    <div className="min-h-screen flex items-center justify-center bg-bgs px-4 py-10">
       <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         
         {/* Left Side: Login Form */}
-        <div className="bg-white p-8 rounded-2xl shadow-lg flex flex-col justify-center">
+        <div className="bg-texts p-8 rounded-2xl shadow-lg flex flex-col justify-center">
           <h2 className="text-3xl font-bold text-text mb-6">Welcome Back</h2>
           
           <form onSubmit={handleLogin} className="flex flex-col gap-4">
@@ -36,7 +36,7 @@ export default function LoginPage() {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="border border-muted p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="border border-muteds p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               required
             />
             <input
@@ -44,17 +44,17 @@ export default function LoginPage() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="border border-muted p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="border border-muteds p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               required
             />
-            <button className="bg-primary text-white p-3 rounded-lg mt-2 hover:opacity-90 transition">
+            <button className="bg-primarys text-texts p-3 rounded-lg mt-2 hover:opacity-90 transition">
               Login
             </button>
           </form>
 
           {/* Extra Options */}
           <div className="mt-4 flex flex-col gap-3">
-            <button className="flex items-center justify-center border border-muted p-2 rounded-lg hover:bg-muted transition">
+            <button className="flex items-center justify-center border border-muteds p-2 rounded-lg hover:bg-muteds transition">
               <Image
                 src="/google-logo.png" // replace with your local google logo
                 alt="Google"
@@ -64,9 +64,9 @@ export default function LoginPage() {
               <span className="ml-2 text-text">Login with Google</span>
             </button>
 
-            <p className="text-sm text-muted text-center">
+            <p className="text-sm text-muteds text-center">
               Don't have an account?{" "}
-              <Link href="/register" className="text-primary font-semibold hover:underline">
+              <Link href="/register" className="text-primarys font-semibold hover:underline">
                 Register
               </Link>
             </p>

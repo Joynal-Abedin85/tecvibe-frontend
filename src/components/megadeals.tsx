@@ -54,17 +54,17 @@ export default function MegaDeals() {
   };
 
   return (
-    <section className="w-full py-12 bg-bg">
+    <section className="w-full py-12 bg-bgs">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
 
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-text">
+          <h2 className="text-2xl md:text-3xl font-bold text-texts">
             Mega Deals of the Day
           </h2>
 
           {/* Timer */}
-          <div className="px-4 py-2 rounded-lg bg-primary text-white text-sm md:text-base font-medium">
+          <div className="px-4 py-2 rounded-lg bg-primarys text-texts text-sm md:text-base font-medium">
             Ends in: {formatTime(counter)}
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function MegaDeals() {
             return (
               <div
                 key={item.id}
-                className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition border border-gray-100"
+                className="bg-bgs rounded-xl shadow-md p-4 hover:shadow-lg transition border border-accents"
               >
                 <div className="relative w-full h-32 sm:h-40 mb-4 rounded-lg overflow-hidden">
                   <Image
@@ -89,21 +89,21 @@ export default function MegaDeals() {
                   />
                 </div>
 
-                <h3 className="font-semibold text-text text-sm sm:text-base mb-2">
+                <h3 className="font-semibold text-texts text-sm sm:text-base mb-2">
                   {item.title}
                 </h3>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-primary font-bold text-lg">
+                  <span className="text-primarys font-bold text-lg">
                     ৳{item.newPrice}
                   </span>
-                  <span className="line-through text-muted text-sm">
+                  <span className="line-through text-muteds text-sm">
                     ৳{item.oldPrice}
                   </span>
                 </div>
 
                 {/* Discount Badge */}
-                <div className="mt-2 w-max bg-secondary text-white text-xs font-bold px-2 py-1 rounded">
+                <div className="mt-2 w-max bg-secondarys text-texts text-xs font-bold px-2 py-1 rounded">
                   -{discount}%
                 </div>
               </div>

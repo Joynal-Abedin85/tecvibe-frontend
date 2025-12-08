@@ -73,17 +73,17 @@ export default function FlashSale() {
   }, []);
 
   return (
-    <section className="py-12 bg-[var(--bg,#F8FAFC)]">
+    <section className="py-12 bg-bgs">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         
         {/* Title Row */}
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text,#1E293B)]">
+          <h2 className="text-2xl md:text-3xl font-bold text-bgs">
             Flash Sale
           </h2>
 
           {/* Timer */}
-          <div className="flex items-center gap-2 text-white font-semibold">
+          <div className="flex items-center gap-2 text-texts font-semibold">
             <span className="bg-red-600 px-3 py-1 rounded">
               {String(timeLeft.hours).padStart(2, "0")}
             </span>
@@ -103,7 +103,7 @@ export default function FlashSale() {
           {products.map((item) => (
             <div
               key={item.id}
-              className="group bg-white border rounded-xl shadow hover:shadow-lg transition overflow-hidden"
+              className="group bg-texts border rounded-xl shadow hover:shadow-lg transition overflow-hidden"
             >
               <div className="relative h-36 md:h-48">
                 <Image
@@ -114,7 +114,7 @@ export default function FlashSale() {
                 />
 
                 {/* Discount Badge */}
-                <span className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded-md shadow">
+                <span className="absolute top-2 left-2 bg-red-600 text-texts text-xs px-2 py-1 rounded-md shadow">
                   -{Math.floor(
                     ((item.oldPrice - item.price) / item.oldPrice) * 100
                   )}
@@ -123,7 +123,7 @@ export default function FlashSale() {
               </div>
 
               <div className="p-3 space-y-1">
-                <p className="font-semibold text-[var(--text,#1E293B)] text-sm">
+                <p className="font-semibold text-texts text-sm">
                   {item.title}
                 </p>
 
@@ -131,7 +131,7 @@ export default function FlashSale() {
                   ৳ {item.price}
                 </p>
 
-                <p className="line-through text-gray-500 text-sm">
+                <p className="line-through text-muteds text-sm">
                   ৳ {item.oldPrice}
                 </p>
               </div>

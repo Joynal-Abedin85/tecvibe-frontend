@@ -48,17 +48,17 @@ const sampleProducts: Product[] = [
 
 export default function ProductList({ title }: ProductListProps) {
   return (
-    <section className="w-full py-10 bg-[var(--color-bg)]">
+    <section className="w-full py-10 bg-bgs">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         
         {/* Title */}
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-text)]">
+          <h2 className="text-2xl md:text-3xl font-bold text-texts">
             {title}
           </h2>
           <Link
             href="/products"
-            className="text-[var(--color-primary)] font-medium hover:underline"
+            className="text-texts font-medium hover:underline"
           >
             View All
           </Link>
@@ -69,7 +69,7 @@ export default function ProductList({ title }: ProductListProps) {
           {sampleProducts.map((product) => (
             <div
               key={product.id}
-              className="rounded-xl bg-white p-4 shadow-sm hover:shadow-md transition border border-gray-100"
+              className="rounded-xl bg-texts p-4 shadow-sm hover:shadow-md transition border border-texts"
             >
               {/* Image */}
               <div className="relative w-full h-40 rounded-lg overflow-hidden">
@@ -82,7 +82,7 @@ export default function ProductList({ title }: ProductListProps) {
               </div>
 
               {/* Info */}
-              <h3 className="mt-3 text-[var(--color-text)] font-semibold line-clamp-1">
+              <h3 className="mt-3 text-texts font-semibold line-clamp-1">
                 {product.name}
               </h3>
 
@@ -90,12 +90,12 @@ export default function ProductList({ title }: ProductListProps) {
               <p className="text-sm text-yellow-500 mt-1">⭐ {product.rating}</p>
 
               {/* Price */}
-              <p className="mt-2 text-lg font-bold text-[var(--color-primary)]">
+              <p className="mt-2 text-lg font-bold text-texts">
                 ${product.price}
               </p>
 
               {/* Button */}
-              <button className="mt-4 w-full py-2 bg-[var(--color-primary)] text-white rounded-lg hover:opacity-90 text-sm font-medium">
+              <button className="mt-4 w-full py-2 bg-bgs text-texts rounded-lg hover:opacity-90 text-sm font-medium">
                 Add to Cart
               </button>
             </div>

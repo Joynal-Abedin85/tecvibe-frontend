@@ -2,27 +2,27 @@ import Image from "next/image";
 
 export default function HeroBanner() {
   return (
-    <section className="w-full bg-bg py-8 md:py-14">
+    <section className="w-full bg-bgs py-8 md:py-14">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-6 items-center">
         
         {/* Left Content */}
         <div className="space-y-6 text-center md:text-left">
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight text-text">
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight text-texts">
             Shop Smart, Live Better
           </h1>
 
-          <p className="text-lg text-muted max-w-md mx-auto md:mx-0">
+          <p className="text-lg text-muteds max-w-md mx-auto md:mx-0">
             Get the best deals on electronics, fashion, home essentials & more.
             Everyday low prices—delivered fast.
           </p>
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <button className="px-6 py-4 rounded-xl text-white text-lg bg-primary hover:opacity-90 transition">
+            <button className="px-6 py-4 rounded-xl text-texts text-lg bg-primarys hover:opacity-90 transition">
               Shop Now
             </button>
 
-            <button className="px-6 py-4 rounded-xl text-lg border border-primary text-primary hover:bg-primary hover:text-white transition">
+            <button className="px-6 py-4 rounded-xl text-lg border border-primarys text-primarys hover:bg-primarys hover:text-texts transition">
               Explore Deals
             </button>
           </div>

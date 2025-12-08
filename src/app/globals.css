@@ -4,12 +4,12 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-primary: #0A400C;
-  --color-secondary: #819067;
-  --color-accent: #00C896;
-  --color-bg: #B1AB86;
-  --color-text: #FEFAE0;
-  --color-muted: #64748B;
+  --color-primarys: #0A400C;
+  --color-secondarys: #819067;
+  --color-accents: #00C896;
+  --color-bgs: #B1AB86;
+  --color-texts: #FEFAE0;
+  --color-muteds: #64748B;
 }
 
 @theme inline {

@@ -38,7 +38,7 @@ export default function BrandCarousel() {
   }, []);
 
   return (
-    <section className="w-full py-12 bg-bg">
+    <section className="w-full py-12 bg-bgs">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
 
         {/* Title */}
@@ -55,7 +55,7 @@ export default function BrandCarousel() {
           {[...brands, ...brands].map((brand, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-32 h-20 bg-white border border-gray-100 rounded-xl shadow-sm flex items-center justify-center hover:shadow-md transition"
+              className="flex-shrink-0 w-32 h-20 bg-texts border border-texts rounded-xl shadow-sm flex items-center justify-center hover:shadow-md transition"
             >
               <Image
                 src={brand}

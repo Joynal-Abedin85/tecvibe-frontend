@@ -49,18 +49,18 @@ const topSelling: Product[] = [
 
 export default function TopSelling() {
   return (
-    <section className="w-full py-12 bg-bg">
+    <section className="w-full py-12 bg-bgs">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
 
         {/* Section Header */}
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-text">
+          <h2 className="text-2xl md:text-3xl font-bold text-texts">
             Top Selling Products
           </h2>
 
           <Link
             href="/top-selling"
-            className="text-primary font-medium hover:underline"
+            className="text-primarys font-medium hover:underline"
           >
             View All
           </Link>
@@ -71,7 +71,7 @@ export default function TopSelling() {
           {topSelling.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-lg transition-all group"
+              className="bg-texts rounded-2xl p-4 shadow-sm border border-texts hover:shadow-lg transition-all group"
             >
               {/* Product Image */}
               <div className="relative w-full h-44 rounded-xl overflow-hidden">
@@ -84,7 +84,7 @@ export default function TopSelling() {
               </div>
 
               {/* Product Name */}
-              <h3 className="mt-3 font-semibold text-text text-sm md:text-base line-clamp-2">
+              <h3 className="mt-3 font-semibold text-texts text-sm md:text-base line-clamp-2">
                 {item.name}
               </h3>
 
@@ -94,12 +94,12 @@ export default function TopSelling() {
               </p>
 
               {/* Price */}
-              <p className="mt-2 text-lg md:text-xl font-bold text-primary">
+              <p className="mt-2 text-lg md:text-xl font-bold text-primarys">
                 ${item.price}
               </p>
 
               {/* Button */}
-              <button className="mt-4 w-full py-2 bg-primary text-white rounded-xl hover:opacity-90 text-sm font-medium">
+              <button className="mt-4 w-full py-2 bg-primarys text-texts rounded-xl hover:opacity-90 text-sm font-medium">
                 Add to Cart
               </button>
             </div>

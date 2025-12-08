@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function PromoBanners() {
   return (
-    <section className="py-12 bg-[var(--color-bg)]">
+    <section className="py-12 bg-bgs">
       <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-3 gap-6">
         
         {/* Banner 1 */}
@@ -13,9 +13,9 @@ export default function PromoBanners() {
             fill
             className="object-cover group-hover:scale-110 transition duration-500"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-primarys/40"></div>
 
-          <div className="absolute left-5 bottom-5 text-white space-y-2">
+          <div className="absolute left-5 bottom-5 text-texts space-y-2">
             <h3 className="text-2xl font-bold">Electronics Sale</h3>
             <p className="text-sm opacity-90">Up to 40% Off</p>
           </div>
@@ -29,9 +29,9 @@ export default function PromoBanners() {
             fill
             className="object-cover group-hover:scale-110 transition duration-500"
           />
-          <div className="absolute inset-0 bg-[var(--color-primary)]/40"></div>
+          <div className="absolute inset-0 bg-primarys/40"></div>
 
-          <div className="absolute left-5 bottom-5 text-white space-y-2">
+          <div className="absolute left-5 bottom-5 text-texts space-y-2">
             <h3 className="text-2xl font-bold">Fashion Deals</h3>
             <p className="text-sm opacity-90">Trendy Styles</p>
           </div>
@@ -45,9 +45,9 @@ export default function PromoBanners() {
             fill
             className="object-cover group-hover:scale-110 transition duration-500"
           />
-          <div className="absolute inset-0 bg-[var(--color-secondary)]/40"></div>
+          <div className="absolute inset-0 bg-secondarys/40"></div>
 
-          <div className="absolute left-5 bottom-5 text-white space-y-2">
+          <div className="absolute left-5 bottom-5 text-texts space-y-2">
             <h3 className="text-2xl font-bold">Home Essentials</h3>
             <p className="text-sm opacity-90">Everyday Discounts</p>
           </div>

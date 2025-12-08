@@ -47,13 +47,13 @@ export default function Testimonials() {
   const t = testimonials[index];
 
   return (
-    <section className="w-full bg-bg py-16">
+    <section className="w-full bg-bgs py-16">
       <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
-        <h2 className="text-3xl font-bold text-text mb-10">
+        <h2 className="text-3xl font-bold text-texts mb-10">
           What Our Customers Say
         </h2>
 
-        <div className="max-w-3xl mx-auto bg-bg p-8 rounded-2xl shadow-lg border border-gray-100 transition">
+        <div className="max-w-3xl mx-auto bg-bgs p-8 rounded-2xl shadow-lg border border-texts transition">
           {/* Avatar */}
           <div className="w-20 h-20 mx-auto relative rounded-full overflow-hidden">
             <Image
@@ -65,25 +65,25 @@ export default function Testimonials() {
           </div>
 
           {/* Name */}
-          <h3 className="mt-4 text-xl font-semibold text-text">{t.name}</h3>
-          <p className="text-muted text-sm">{t.role}</p>
+          <h3 className="mt-4 text-xl font-semibold text-texts">{t.name}</h3>
+          <p className="text-muteds text-sm">{t.role}</p>
 
           {/* Stars */}
           <div className="flex justify-center gap-1 mt-3">
             {Array(t.rating)
               .fill(0)
               .map((_, i) => (
-                <span key={i} className="text-secondary text-lg">★</span>
+                <span key={i} className="text-secondarys text-lg">★</span>
               ))}
             {Array(5 - t.rating)
               .fill(0)
               .map((_, i) => (
-                <span key={i} className="text-muted text-lg">★</span>
+                <span key={i} className="text-muteds text-lg">★</span>
               ))}
           </div>
 
           {/* Review */}
-          <p className="mt-5 text-text text-base leading-relaxed max-w-xl mx-auto">
+          <p className="mt-5 text-texts text-base leading-relaxed max-w-xl mx-auto">
             "{t.review}"
           </p>
 
@@ -94,7 +94,7 @@ export default function Testimonials() {
                 key={i}
                 onClick={() => setIndex(i)}
                 className={`w-3 h-3 rounded-full transition ${
-                  index === i ? "bg-primary" : "bg-muted/40"
+                  index === i ? "bg-primarys" : "bg-muteds/40"
                 }`}
               ></button>
             ))}
