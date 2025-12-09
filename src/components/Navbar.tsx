@@ -4,11 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/app/context/authprovider";
 
-export default function Navbar({ user }: { user?: { name: string; avatar: string } }) {
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
+  const { user, logout } = useAuth();
+  console.log(user);
 
   const links = [
     { name: "Home", href: "/" },
@@ -53,8 +56,8 @@ export default function Navbar({ user }: { user?: { name: string; avatar: string
                   className="flex items-center focus:outline-none"
                 >
                   <Image
-                    src={user.avatar}
-                    alt={user.name}
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmKYnbMo3YvGz1uc3C6TfjyhScEfzqHyeAUg&s"
+                    alt="{user.name}"
                     width={36}
                     height={36}
                     className="rounded-full"
@@ -74,7 +77,7 @@ export default function Navbar({ user }: { user?: { name: string; avatar: string
                       className="w-full text-left px-4 py-2 text-sm text-texts hover:bg-red-500 hover:text-texts"
                       onClick={() => {
                         setDropdownOpen(false);
-                        console.log("Logout"); // replace with logout function
+                        logout(); // 🔥 এখানেই logout হবে
                       }}
                     >
                       Logout
@@ -106,7 +109,12 @@ export default function Navbar({ user }: { user?: { name: string; avatar: string
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 ) : (
                   <svg
@@ -116,7 +124,12 @@ export default function Navbar({ user }: { user?: { name: string; avatar: string
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
                   </svg>
                 )}
               </button>

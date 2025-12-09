@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import axios from "@/lib/axios";
+import axios from "@/lib/axioss";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -25,6 +25,9 @@ export default function RegisterPage() {
         email,
         password,
         confirmPassword,
+      },
+      {
+        withCredentials: true,
       });
       router.push("/login");
     } catch (error) {
@@ -103,7 +106,7 @@ export default function RegisterPage() {
         {/* Right Side: Illustration */}
         <div className="hidden md:flex justify-center items-center">
           <Image
-            src="/register-animation.svg" // replace with your illustration
+            src="https://i.postimg.cc/HLB8FNfB/vecteezy-mobile-security-concept-secure-internet-connection-27389247.png" 
             alt="Register Illustration"
             width={400}
             height={400}

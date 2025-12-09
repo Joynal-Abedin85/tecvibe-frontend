@@ -34,14 +34,14 @@ const sampleProducts: Product[] = [
     id: "3",
     name: "DSLR Camera",
     price: 499,
-    image: "https://images.unsplash.com/photo-1519183071298-a2962be90b8e",
+    image: "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZHNsciUyMGNhbWVyYXxlbnwwfHwwfHx8MA%3D%3D",
     rating: 4.7,
   },
   {
     id: "4",
     name: "iPhone 15 Pro",
     price: 999,
-    image: "https://images.unsplash.com/photo-1695048133624-71bc133c1d44",
+    image: "https://images.unsplash.com/photo-1740650697915-26e50f4b1f5d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aXBob25lJTIwMTVwcm98ZW58MHx8MHx8fDA%3D",
     rating: 4.9,
   },
 ];
@@ -69,7 +69,7 @@ export default function ProductList({ title }: ProductListProps) {
           {sampleProducts.map((product) => (
             <div
               key={product.id}
-              className="rounded-xl bg-texts p-4 shadow-sm hover:shadow-md transition border border-texts"
+              className="rounded-xl bg-secondarys p-4 shadow-sm hover:shadow-md transition border border-texts"
             >
               {/* Image */}
               <div className="relative w-full h-40 rounded-lg overflow-hidden">

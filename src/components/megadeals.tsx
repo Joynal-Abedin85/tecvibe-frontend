@@ -7,7 +7,7 @@ const deals = [
   {
     id: 1,
     title: "Wireless Headphones",
-    img: "https://images.unsplash.com/photo-1585386959984-a41552231634?w=600&q=80",
+    img: "https://plus.unsplash.com/premium_photo-1678099940967-73fe30680949?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2lyZWxlc3MlMjBoZWFkcGhvbmVzfGVufDB8fDB8fHww",
     oldPrice: 3200,
     newPrice: 1890,
   },
@@ -28,7 +28,7 @@ const deals = [
   {
     id: 4,
     title: "Gaming Keyboard",
-    img: "https://images.unsplash.com/photo-1587202372775-e229f172b9b0?w=600&q=80",
+    img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8a2V5Ym9hcmR8ZW58MHx8MHx8fDA%3D",
     oldPrice: 2500,
     newPrice: 1599,
   },

@@ -17,14 +17,14 @@ const products: Product[] = [
     title: "Wireless Headphones",
     price: 1200,
     oldPrice: 2500,
-    img: "https://images.unsplash.com/photo-1518442310709-1c1d7a1f724c?auto=format&fit=crop&w=600&q=80",
+    img: "https://plus.unsplash.com/premium_photo-1678099940967-73fe30680949?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2lyZWxlc3MlMjBoZWFkcGhvbmVzfGVufDB8fDB8fHww",
   },
   {
     id: 2,
     title: "Smart Watch",
     price: 1800,
     oldPrice: 3200,
-    img: "https://images.unsplash.com/photo-1517821099609-3445c7ee9934?auto=format&fit=crop&w=600&q=80",
+    img: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c21hcnQlMjB3YXRjaHxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const products: Product[] = [
     title: "Gaming Mouse",
     price: 650,
     oldPrice: 1200,
-    img: "https://images.unsplash.com/photo-1584273143981-41c073dfeeb8?auto=format&fit=crop&w=600&q=80",
+    img: "https://images.unsplash.com/photo-1613141411244-0e4ac259d217?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG1vdXNlfGVufDB8fDB8fHww",
   },
 ];
 
@@ -103,7 +103,7 @@ export default function FlashSale() {
           {products.map((item) => (
             <div
               key={item.id}
-              className="group bg-texts border rounded-xl shadow hover:shadow-lg transition overflow-hidden"
+              className="group bg-secondarys border rounded-xl shadow hover:shadow-lg transition overflow-hidden"
             >
               <div className="relative h-36 md:h-48">
                 <Image

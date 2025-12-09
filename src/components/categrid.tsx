@@ -9,11 +9,11 @@ const categories = [
   },
   {
     title: "Fashion",
-    img: "https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?auto=format&fit=crop&w=600&q=80",
+    img: "https://img.freepik.com/premium-photo/market-stall-sale_1048944-15078758.jpg?semt=ais_se_enriched&w=740&q=80",
   },
   {
     title: "Home Essentials",
-    img: "https://images.unsplash.com/photo-1616627797445-5f3e000ec6b3?auto=format&fit=crop&w=600&q=80",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZvxoh-yrDZC7ZY3rts6qx7EBujnUJg6Jh0w&s",
   },
   {
     title: "Mobile Phones",

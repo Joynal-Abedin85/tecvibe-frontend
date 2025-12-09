@@ -1,20 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import axios from "@/lib/axios";
+import axios from "@/lib/axioss";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { useAuth } from "../context/authprovider";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const {setUser} = useAuth()
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.post("/api/v1/auth/login", { email, password });
+      const res = await axios.post("/api/v1/auth/login", { email, password },
+  { withCredentials: true });
+      console.log(res.data.data.user)
+      console.log(res.data.data)
+      setUser(res.data.data.user)
       router.push("/");
     } catch (error) {
       console.error(error);
@@ -60,6 +66,7 @@ export default function LoginPage() {
                 alt="Google"
                 width={20}
                 height={20}
+                unoptimized
               />
               <span className="ml-2 text-text">Login with Google</span>
             </button>
@@ -73,14 +80,14 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Right Side: Animation / Illustration */}
         <div className="hidden md:flex justify-center items-center">
           <Image
-            src="/login-animation.svg" // replace with your animation or illustration
+            src="https://i.postimg.cc/d3WW1nZt/vecteezy-business-data-protection-and-network-security-isometric-48783384.png" 
             alt="Login Illustration"
             width={400}
             height={400}
             className="object-contain"
+            unoptimized
           />
         </div>
       </div>

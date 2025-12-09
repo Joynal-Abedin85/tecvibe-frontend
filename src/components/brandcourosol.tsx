@@ -4,13 +4,19 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 const brands = [
-  "https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png",
-  "https://upload.wikimedia.org/wikipedia/commons/2/21/Samsung_Logo.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/3/35/Adidas_Logo.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/0/0c/Nike_logo.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/2/26/Sony_logo.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/6/6a/HP_logo_2012.svg",
-  "https://upload.wikimedia.org/wikipedia/commons/4/44/Xiaomi_Logo.svg",
+  // "https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YnJhbmQlMjBsb2dvfGVufDB8fDB8fHww",
+
+   "https://images.unsplash.com/photo-1646627928017-969b372e2727?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWklMjBicmFuZCUyMGxvZ28lMjB0ZWNofGVufDB8fDB8fHww",
+
+  "https://images.unsplash.com/photo-1570882280426-df8ac5ccd672?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YnJhbmQlMjBsb2dvfGVufDB8fDB8fHww",
+
+  "https://images.unsplash.com/photo-1555274175-75f4056dfd05?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnJhbmQlMjBsb2dvfGVufDB8fDB8fHww",
+
+  "https://images.unsplash.com/photo-1622651132634-a7ed1fbb86dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YnJhbmQlMjBsb2dvJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D",
+
+  "https://images.unsplash.com/photo-1760037028517-e5cc6e3ebd3e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YnJhbmQlMjBsb2dvJTIwdGVjaHxlbnwwfHwwfHx8MA%3D%3D",
+
+  "https://images.unsplash.com/photo-1662947995643-0007c2b5ebb6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c2Ftc3VuZyUyMGJyYW5kJTIwbG9nbyUyMHRlY2h8ZW58MHx8MHx8fDA%3D",
 ];
 
 export default function BrandCarousel() {

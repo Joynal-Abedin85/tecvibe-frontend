@@ -8,7 +8,7 @@ export default function PromoBanners() {
         {/* Banner 1 */}
         <div className="relative h-48 md:h-56 rounded-2xl overflow-hidden group shadow">
           <Image
-            src="https://images.unsplash.com/photo-1518442310709-1c1d7a1f724c?auto=format&fit=crop&w=1200&q=80"
+            src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=600&q=80"
             alt="Electronics Sale"
             fill
             className="object-cover group-hover:scale-110 transition duration-500"
@@ -24,7 +24,7 @@ export default function PromoBanners() {
         {/* Banner 2 */}
         <div className="relative h-48 md:h-56 rounded-2xl overflow-hidden group shadow">
           <Image
-            src="https://images.unsplash.com/photo-1526178631152-910c3b2d49d2?auto=format&fit=crop&w=1200&q=80"
+            src="https://img.freepik.com/premium-photo/market-stall-sale_1048944-15078758.jpg?semt=ais_se_enriched&w=740&q=80"
             alt="Fashion Deals"
             fill
             className="object-cover group-hover:scale-110 transition duration-500"
@@ -40,7 +40,7 @@ export default function PromoBanners() {
         {/* Banner 3 */}
         <div className="relative h-48 md:h-56 rounded-2xl overflow-hidden group shadow">
           <Image
-            src="https://images.unsplash.com/photo-1607082349566-187342175e2e?auto=format&fit=crop&w=1200&q=80"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZvxoh-yrDZC7ZY3rts6qx7EBujnUJg6Jh0w&s"
             alt="Home Essentials"
             fill
             className="object-cover group-hover:scale-110 transition duration-500"
