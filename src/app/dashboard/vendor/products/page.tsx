@@ -8,7 +8,7 @@ export default function VendorProducts() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/v1/vendors/products").then((res) => setProducts(res.data));
+    axios.get("/api/v1/vendor/products").then((res) => setProducts(res.data));
   }, []);
 
   return (

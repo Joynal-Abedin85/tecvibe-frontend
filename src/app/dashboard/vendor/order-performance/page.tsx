@@ -17,7 +17,7 @@ export default function VendorOrderPerformance() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get("/api/v1/vendors/order-performance");
+        const res = await axios.get("/api/v1/vendor/order-performance");
         const payload = res.data?.data ?? res.data;
         setMetrics(Array.isArray(payload) ? payload : []);
       } catch (err) {

@@ -7,7 +7,7 @@ export default function VendorDashboard() {
   const [stats, setStats] = useState<any>(null);
 
   useEffect(() => {
-    axios.get("/api/v1/vendors/dashboard").then((res) => setStats(res.data));
+    axios.get("/api/v1/vendor/dashboard").then((res) => setStats(res.data));
   }, []);
 
   if (!stats) return <div>Loading...</div>;

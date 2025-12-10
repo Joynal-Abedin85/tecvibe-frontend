@@ -12,7 +12,7 @@ export default function CreateProduct() {
   });
 
   const handleSubmit = async () => {
-    await axios.post("/api/v1/vendors/products", form);
+    await axios.post("/api/v1/vendor/products", form);
     alert("Product Created!");
   };
 

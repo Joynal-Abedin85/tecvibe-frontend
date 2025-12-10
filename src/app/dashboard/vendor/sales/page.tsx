@@ -8,7 +8,7 @@ export default function VendorRefundsPage() {
   const [refunds, setRefunds] = useState<any[]>([]);
 
   const fetchRefunds = async () => {
-    const res = await axios.get("/api/v1/vendors/refunds");
+    const res = await axios.get("/api/v1/vendor/refunds");
     setRefunds(res.data.data);
   };
 

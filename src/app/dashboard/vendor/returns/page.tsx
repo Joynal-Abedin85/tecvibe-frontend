@@ -8,7 +8,7 @@ export default function VendorReturnsPage() {
   const [returns, setReturns] = useState<any[]>([]);
 
   const fetchReturns = async () => {
-    const res = await axios.get("/api/v1/vendors/returns");
+    const res = await axios.get("/api/v1/vendor/returns");
     setReturns(res.data.data);
   };
 

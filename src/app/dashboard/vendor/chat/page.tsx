@@ -21,7 +21,7 @@ export default function VendorChatPage() {
 
   const fetchMessages = async () => {
     try {
-      const res = await axios.get("/api/v1/vendors/chat");
+      const res = await axios.get("/api/v1/vendor/chat");
       const payload = res.data?.data ?? res.data;
       setMessages(Array.isArray(payload) ? payload : []);
     } catch (err) {
@@ -42,7 +42,7 @@ export default function VendorChatPage() {
   const handleSend = async () => {
     if (!text.trim()) return;
     try {
-      await axios.post("/api/v1/vendors/chat", { text });
+      await axios.post("/api/v1/vendor/chat", { text });
       setText("");
       fetchMessages();
     } catch (err) {

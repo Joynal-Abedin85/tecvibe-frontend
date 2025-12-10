@@ -74,6 +74,12 @@ export default function UserDashboard() {
             >
               ❤️ My Wishlist
             </Link>
+             <Link
+              href="/dashboard/user/applyvendor"
+              className="block p-3 border rounded-lg hover:bg-gray-100 transition"
+            >
+              ❤️ apply vendor
+            </Link>
           </div>
         </div>
 

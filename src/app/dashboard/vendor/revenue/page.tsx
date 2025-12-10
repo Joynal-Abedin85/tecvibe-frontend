@@ -14,7 +14,7 @@ export default function VendorRevenuePage() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get("/api/v1/vendors/revenue");
+        const res = await axios.get("/api/v1/vendor/revenue");
         const payload = res.data?.data ?? res.data;
         const arr: Item[] = Array.isArray(payload) ? payload : [];
         setData(arr);

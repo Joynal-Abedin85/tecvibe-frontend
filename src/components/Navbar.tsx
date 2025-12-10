@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/app/context/authprovider";
+import { dashboardRoutes } from "@/utils/dashroute";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -67,7 +68,7 @@ export default function Navbar() {
                 {dropdownOpen && (
                   <div className="absolute right-0 mt-2 w-40 bg-bgs border rounded-lg shadow-lg py-2">
                     <Link
-                      href="/dashboard/user"
+                       href={dashboardRoutes[user?.role] || "/dashboard/user"}
                       className="block px-4 py-2 text-sm text-texts hover:bg-primarys hover:text-texts"
                       onClick={() => setDropdownOpen(false)}
                     >

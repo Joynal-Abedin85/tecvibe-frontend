@@ -10,7 +10,7 @@ export default function VendorOrdersPage() {
 
   useEffect(() => {
     axios
-      .get("/api/v1/vendors/orders")
+      .get("/api/v1/vendor/orders")
       .then((res) => {
         setOrders(res.data);
         setLoading(false);

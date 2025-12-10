@@ -17,7 +17,7 @@ export default function EditProductPage() {
   // Fetch product data
   useEffect(() => {
     axios
-      .get(`/api/v1/vendors/products/${id}`)
+      .get(`/api/v1/vendor/products/${id}`)
       .then((res) => {
         setProduct(res.data);
         setStock(res.data.stock);
@@ -31,7 +31,7 @@ export default function EditProductPage() {
 
   // Update product data
   const handleUpdate = async () => {
-    await axios.put(`/api/v1/vendors/products/${id}`, {
+    await axios.put(`/api/v1/vendor/products/${id}`, {
       name: product.name,
       price: product.price,
       description: product.description,
@@ -46,7 +46,7 @@ export default function EditProductPage() {
     images.forEach((img) => formData.append("images", img));
 
     await axios.post(
-      `/api/v1/vendors/products/${id}/images`,
+      `/api/v1/vendor/products/${id}/images`,
       formData,
       { headers: { "Content-Type": "multipart/form-data" } }
     );
@@ -56,20 +56,20 @@ export default function EditProductPage() {
 
   // Stock Update
   const handleStockUpdate = async () => {
-    await axios.put(`/api/v1/vendors/products/${id}/stock`, { stock });
+    await axios.put(`/api/v1/vendor/products/${id}/stock`, { stock });
     alert("Stock Updated!");
   };
 
   // Add Offer
   const handleAddOffer = async () => {
-    await axios.post(`/api/v1/vendors/products/${id}/offer`, offer);
+    await axios.post(`/api/v1/vendor/products/${id}/offer`, offer);
     alert("Offer Added!");
   };
 
   // Delete Product
   const handleDelete = async () => {
     if (!confirm("Are you sure?")) return;
-    await axios.delete(`/api/v1/vendors/products/${id}`);
+    await axios.delete(`/api/v1/vendor/products/${id}`);
     alert("Product Deleted");
     router.push("/dashboard/vendor/products");
   };

@@ -19,7 +19,7 @@ export default function VendorInventoryStatusPage() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get("/api/v1/vendors/inventory-status");
+        const res = await axios.get("/api/v1/vendor/inventory-status");
         const payload = res.data?.data ?? res.data;
         setItems(Array.isArray(payload) ? payload : []);
       } catch (err) {

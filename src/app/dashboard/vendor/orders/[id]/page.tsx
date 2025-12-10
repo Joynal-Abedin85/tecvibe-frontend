@@ -13,13 +13,13 @@ export default function VendorOrderDetailsPage() {
   const [status, setStatus] = useState("");
 
   const fetchOrder = async () => {
-    const res = await axios.get(`/api/v1/vendors/orders/${id}`);
+    const res = await axios.get(`/api/v1/vendor/orders/${id}`);
     setOrder(res.data.data);
     setStatus(res.data.data.status);
   };
 
   const updateStatus = async () => {
-    await axios.put(`/api/v1/vendors/orders/${id}/status`, { status });
+    await axios.put(`/api/v1/vendor/orders/${id}/status`, { status });
     fetchOrder();
   };
 

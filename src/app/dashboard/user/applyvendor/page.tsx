@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "@/lib/axioss";
 
 export default function ApplyVendor() {
-  const [form, setForm] = useState({ shopName: "", address: "" });
+  const [form, setForm] = useState({ shopname: "", area: "" });
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
@@ -21,13 +21,13 @@ export default function ApplyVendor() {
       <input
         className="w-full border p-2 rounded mb-2"
         placeholder="Shop Name"
-        onChange={(e) => setForm({ ...form, shopName: e.target.value })}
+        onChange={(e) => setForm({ ...form, shopname: e.target.value })}
       />
 
       <textarea
         className="w-full border p-2 rounded mb-2"
         placeholder="Address"
-        onChange={(e) => setForm({ ...form, address: e.target.value })}
+        onChange={(e) => setForm({ ...form, area: e.target.value })}
       />
 
       <button
