@@ -67,7 +67,7 @@ export default function Navbar() {
                 {dropdownOpen && (
                   <div className="absolute right-0 mt-2 w-40 bg-bgs border rounded-lg shadow-lg py-2">
                     <Link
-                      href="/dashboard"
+                      href="/dashboard/user"
                       className="block px-4 py-2 text-sm text-texts hover:bg-primarys hover:text-texts"
                       onClick={() => setDropdownOpen(false)}
                     >
