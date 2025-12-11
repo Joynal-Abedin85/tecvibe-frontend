@@ -16,8 +16,8 @@ export default function CategoryCreatePage() {
     if (!name.trim()) { alert("Name is required"); return; }
     try {
       setLoading(true);
-      await axios.post("/api/admin/categories", { name, slug, description });
-      router.push("/dashboard/admin/categories");
+      await axios.post("/api/v1/admin/categories", { name, slug, description });
+      router.push("/api/v1/dashboard/admin/categories");
     } catch (err) {
       console.error(err);
       alert("Create failed");

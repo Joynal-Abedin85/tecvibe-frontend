@@ -15,7 +15,7 @@ export default function CategoryEditPage() {
   const fetchItem = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`/api/admin/categories/${id}`);
+      const res = await axios.get(`/api/v1/admin/categories/${id}`);
       setItem(res.data?.data ?? res.data);
     } catch (e) {
       console.error(e);
@@ -31,9 +31,9 @@ export default function CategoryEditPage() {
     if (!item?.name?.trim()) { alert("Name required"); return; }
     try {
       setSaving(true);
-      await axios.put(`/api/admin/categories/${id}`, { name: item.name, slug: item.slug, description: item.description });
+      await axios.put(`/api/v1/admin/categories/${id}`, { name: item.name, slug: item.slug, description: item.description });
       alert("Updated");
-      router.push("/dashboard/admin/categories");
+      router.push("/api/v1/dashboard/admin/categories");
     } catch (e) {
       console.error(e);
       alert("Update failed");
@@ -43,8 +43,8 @@ export default function CategoryEditPage() {
   const handleDelete = async () => {
     if (!confirm("Delete category?")) return;
     try {
-      await axios.delete(`/api/admin/categories/${id}`);
-      router.push("/dashboard/admin/categories");
+      await axios.delete(`/api/v1/admin/categories/${id}`);
+      router.push("/api/v1/dashboard/admin/categories");
     } catch (e) {
       console.error(e); alert("Delete failed");
     }

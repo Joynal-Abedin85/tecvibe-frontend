@@ -22,11 +22,11 @@ export default function BrandCreatePage() {
         fd.append("name", name);
         fd.append("description", desc);
         fd.append("logo", logoFile);
-        await axios.post("/api/admin/brands", fd, { headers: { "Content-Type": "multipart/form-data" } });
+        await axios.post("/api/v1/admin/brands", fd, { headers: { "Content-Type": "multipart/form-data" } });
       } else {
-        await axios.post("/api/admin/brands", { name, description: desc });
+        await axios.post("/api/v1/admin/brands", { name, description: desc });
       }
-      router.push("/dashboard/admin/brands");
+      router.push("/api/v1/dashboard/admin/brands");
     } catch (err) {
       console.error(err); alert("Create failed");
     } finally { setLoading(false); }

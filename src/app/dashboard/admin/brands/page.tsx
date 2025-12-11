@@ -15,7 +15,7 @@ export default function BrandsListPage() {
   const fetchBrands = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("/api/admin/brands");
+      const res = await axios.get("/api/v1/admin/brands");
       const payload = res.data?.data ?? res.data;
       setItems(Array.isArray(payload) ? payload : []);
     } catch (e) {

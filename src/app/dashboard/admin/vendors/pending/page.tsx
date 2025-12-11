@@ -6,14 +6,15 @@ import axios from "@/lib/axioss";
 
 type Vendor = {
   id: string;
-  userId?: string;
-  shopName?: string;
-  ownerName?: string;
-  email?: string;
-  phone?: string;
-  status?: string;
-  createdAt?: string;
-  address?: string;
+  shopname: string;
+  status: string;
+  createdAt: string;
+  area?: string;
+  user: {
+    name: string;
+    email: string;
+    phone: string;
+  };
 };
 
 export default function PendingVendorsPage() {
@@ -22,11 +23,13 @@ export default function PendingVendorsPage() {
   const [processing, setProcessing] = useState<string | null>(null);
   const [err, setErr] = useState<string | null>(null);
 
+  // Fetch pending vendors
   const fetchPending = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("/api/admin/vendors/pending");
-      const payload = res.data?.data ?? res.data;
+      const res = await axios.get("/api/v1/admin/vendors/pending");
+      console.log(res.data.vendors)
+      const payload = res.data?.vendors ?? res.data;
       setVendors(Array.isArray(payload) ? payload : []);
     } catch (e: any) {
       console.error(e);
@@ -40,11 +43,12 @@ export default function PendingVendorsPage() {
     fetchPending();
   }, []);
 
+  // Approve vendor
   const handleApprove = async (id: string) => {
     if (!confirm("Approve this vendor?")) return;
     try {
       setProcessing(id);
-      await axios.put(`/api/admin/vendors/${id}/approve`);
+      await axios.put(`/api/v1/admin/vendors/${id}/approve`);
       await fetchPending();
     } catch (err) {
       alert("Approve failed");
@@ -53,11 +57,12 @@ export default function PendingVendorsPage() {
     }
   };
 
+  // Reject vendor
   const handleReject = async (id: string) => {
     if (!confirm("Reject this vendor?")) return;
     try {
       setProcessing(id);
-      await axios.put(`/api/admin/vendors/${id}/reject`);
+      await axios.put(`/api/v1/admin/vendors/${id}/reject`);
       await fetchPending();
     } catch (err) {
       alert("Reject failed");
@@ -82,7 +87,9 @@ export default function PendingVendorsPage() {
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
-      <h1 className="text-2xl font-bold text-[var(--color-primarys)] mb-4">Pending Vendor Applications</h1>
+      <h1 className="text-2xl font-bold text-[var(--color-primarys)] mb-4">
+        Pending Vendor Applications
+      </h1>
 
       {err && <div className="text-red-600 mb-4">{err}</div>}
 
@@ -91,12 +98,19 @@ export default function PendingVendorsPage() {
       ) : (
         <div className="space-y-3">
           {vendors.map((v) => (
-            <div key={v.id} className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 p-4 border rounded bg-white shadow">
+            <div
+              key={v.id}
+              className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 p-4 border rounded bg-white shadow"
+            >
               <div>
-                <div className="font-semibold text-lg">{v.shopName ?? "Shop"}</div>
-                <div className="text-sm text-[var(--color-muteds)]">{v.ownerName ?? v.email}</div>
-                <div className="text-xs text-gray-500 mt-1">{v.address}</div>
-                <div className="text-xs text-gray-400 mt-1">Applied: {v.createdAt ? new Date(v.createdAt).toLocaleString() : "-"}</div>
+                <div className="font-semibold text-lg">{v.shopname}</div>
+                <div className="text-sm text-[var(--color-muteds)]">
+                  {v.user?.name ?? v.user?.email}
+                </div>
+                <div className="text-xs text-gray-500 mt-1">{v.area}</div>
+                <div className="text-xs text-gray-400 mt-1">
+                  Applied: {v.createdAt ? new Date(v.createdAt).toLocaleString() : "-"}
+                </div>
               </div>
 
               <div className="flex gap-2">

@@ -6,12 +6,14 @@ import Link from "next/link";
 
 type Vendor = {
   id: string;
-  shopName: string;
-  ownerName: string;
-  email: string;
-  phone: string;
+  shopname: string;
   status: string;
   createdAt: string;
+  user: {
+    name: string;
+    email: string;
+    phone: string;
+  };
 };
 
 export default function AllVendorsPage() {
@@ -23,7 +25,7 @@ export default function AllVendorsPage() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("/api/admin/vendors");
+      const res = await axios.get("/api/v1/manager/vendors");
       setVendors(res.data?.data ?? []);
     } catch (error) {
       console.log(error);
@@ -39,9 +41,9 @@ export default function AllVendorsPage() {
 
   const filtered = vendors.filter(
     (v) =>
-      v.shopName.toLowerCase().includes(search.toLowerCase()) ||
-      v.ownerName.toLowerCase().includes(search.toLowerCase()) ||
-      v.email.toLowerCase().includes(search.toLowerCase())
+      v.shopname.toLowerCase().includes(search.toLowerCase()) ||
+      v.user.name.toLowerCase().includes(search.toLowerCase()) ||
+      v.user.email.toLowerCase().includes(search.toLowerCase())
   );
 
   if (loading)
@@ -49,7 +51,6 @@ export default function AllVendorsPage() {
       <div className="p-6">
         <div className="animate-pulse space-y-4 max-w-6xl mx-auto">
           <div className="h-8 bg-gray-200 w-1/3 rounded"></div>
-          <div className="h-6 bg-gray-200 w-full rounded"></div>
           <div className="h-6 bg-gray-200 w-full rounded"></div>
           <div className="h-6 bg-gray-200 w-full rounded"></div>
         </div>
@@ -64,7 +65,6 @@ export default function AllVendorsPage() {
 
       {err && <p className="text-red-600 mb-4">{err}</p>}
 
-      {/* Search */}
       <div className="flex items-center justify-between mb-4">
         <input
           type="text"
@@ -75,7 +75,6 @@ export default function AllVendorsPage() {
         />
       </div>
 
-      {/* Table */}
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border rounded shadow">
           <thead className="bg-[var(--color-bgs)] text-[var(--color-texts)]">
@@ -99,10 +98,10 @@ export default function AllVendorsPage() {
             ) : (
               filtered.map((v) => (
                 <tr key={v.id} className="border-t">
-                  <td className="p-3">{v.shopName}</td>
-                  <td className="p-3">{v.ownerName}</td>
-                  <td className="p-3">{v.email}</td>
-                  <td className="p-3">{v.phone}</td>
+                  <td className="p-3">{v.shopname}</td>
+                  <td className="p-3">{v.user.name}</td>
+                  <td className="p-3">{v.user.email}</td>
+                  <td className="p-3">{v.user.phone}</td>
                   <td className="p-3">
                     <span
                       className={`px-2 py-1 rounded text-xs ${

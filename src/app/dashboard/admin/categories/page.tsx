@@ -21,7 +21,7 @@ export default function CategoriesListPage() {
   const fetchCategories = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("/api/admin/categories");
+      const res = await axios.get("/api/v1/admin/categories");
       const payload = res.data?.data ?? res.data;
       setItems(Array.isArray(payload) ? payload : []);
     } catch (e) {

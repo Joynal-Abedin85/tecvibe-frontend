@@ -22,7 +22,7 @@ export default function AdminHomePage() {
     (async () => {
       try {
         setLoading(true);
-        const res = await axios.get("/api/admin/reports");
+        const res = await axios.get("/api/v1/admin/reports");
         // backend might return res.data or res.data.data
         const payload = (res.data && (res.data.data ?? res.data)) || {};
         setStats({

@@ -4,16 +4,24 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "@/lib/axioss";
 
+const fields = ["name", "email", "phone"] as const;
+type FieldType = typeof fields[number];
+
 export default function CreateManagerPage() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       setLoading(true);
-      await axios.post("/api/admin/managers", form);
+      await axios.post("/api/v1/admin/managers", form);
       router.push("/dashboard/admin/managers");
     } catch (e) {
       alert("Failed to create manager");
@@ -32,14 +40,14 @@ export default function CreateManagerPage() {
         onSubmit={handleSubmit}
         className="bg-white p-5 rounded shadow space-y-4"
       >
-        {["name", "email", "phone"].map((field) => (
+        {fields.map((field: FieldType) => (
           <div key={field}>
             <label className="block mb-1 capitalize">{field}</label>
             <input
               className="border w-full p-2 rounded"
               value={form[field]}
               onChange={(e) =>
-                setForm({ ...form, [field]: e.target.value })
+                setForm((prev) => ({ ...prev, [field]: e.target.value }))
               }
               required
             />
@@ -56,3 +64,4 @@ export default function CreateManagerPage() {
     </div>
   );
 }
+

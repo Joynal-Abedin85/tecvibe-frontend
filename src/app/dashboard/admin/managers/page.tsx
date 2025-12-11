@@ -13,7 +13,7 @@ export default function ManagersListPage() {
   const fetchManagers = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("/api/admin/managers");
+      const res = await axios.get("/api/v1/admin/managers");
       setItems(Array.isArray(res.data?.data) ? res.data.data : []);
     } catch (e) {
       setErr("Failed to load managers");
@@ -26,7 +26,7 @@ export default function ManagersListPage() {
     fetchManagers();
   }, []);
 
-  const filtered = items.filter((m) =>
+  const filtered = items.filter((m:any) =>
     m.name.toLowerCase().includes(q.toLowerCase())
   );
 
@@ -86,7 +86,7 @@ export default function ManagersListPage() {
             </thead>
 
             <tbody>
-              {filtered.map((m) => (
+              {filtered.map((m:any) => (
                 <tr key={m.id} className="border-t">
                   <td className="p-3">{m.name}</td>
                   <td className="p-3">{m.email}</td>

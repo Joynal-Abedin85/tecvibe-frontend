@@ -16,7 +16,7 @@ export default function BrandEditPage() {
   const fetchBrand = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`/api/admin/brands/${id}`);
+      const res = await axios.get(`/api/v1/admin/brands/${id}`);
       setItem(res.data?.data ?? res.data);
     } catch (e) {
       console.error(e);
@@ -36,12 +36,12 @@ export default function BrandEditPage() {
         fd.append("name", item.name);
         fd.append("description", item.description ?? "");
         fd.append("logo", logoFile);
-        await axios.put(`/api/admin/brands/${id}`, fd, { headers: { "Content-Type": "multipart/form-data" } });
+        await axios.put(`/api/v1/admin/brands/${id}`, fd, { headers: { "Content-Type": "multipart/form-data" } });
       } else {
-        await axios.put(`/api/admin/brands/${id}`, { name: item.name, description: item.description });
+        await axios.put(`/api/v1/admin/brands/${id}`, { name: item.name, description: item.description });
       }
       alert("Updated");
-      router.push("/dashboard/admin/brands");
+      router.push("/api/v1/dashboard/admin/brands");
     } catch (e) {
       console.error(e);
       alert("Update failed");
@@ -51,8 +51,8 @@ export default function BrandEditPage() {
   const handleDelete = async () => {
     if (!confirm("Delete brand?")) return;
     try {
-      await axios.delete(`/api/admin/brands/${id}`);
-      router.push("/dashboard/admin/brands");
+      await axios.delete(`/api/v1/admin/brands/${id}`);
+      router.push("/api/v1/dashboard/admin/brands");
     } catch (e) {
       console.error(e); alert("Delete failed");
     }
