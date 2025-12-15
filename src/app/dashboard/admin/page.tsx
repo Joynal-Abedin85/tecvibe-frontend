@@ -173,6 +173,22 @@ export default function AdminHomePage() {
           <div className="text-sm mt-1 text-[var(--color-muteds)]">In-depth analytics and export.</div>
         </Link>
       </div>
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Link href="/dashboard/admin/categories" className="block p-3 bg-[var(--color-bgs)] text-[var(--color-texts)] rounded shadow">
+          <div className="font-semibold">categories </div>
+          <div className="text-sm mt-1">Review vendor applications and approve or reject.</div>
+        </Link>
+
+        <Link href="/dashboard/admin/brands" className="block p-3 border rounded shadow">
+          <div className="font-semibold"> brands</div>
+          <div className="text-sm mt-1 text-[var(--color-muteds)]">View all orders and process refunds/returns.</div>
+        </Link>
+
+        <Link href="/dashboard/admin/managers" className="block p-3 border rounded shadow">
+          <div className="font-semibold">managers</div>
+          <div className="text-sm mt-1 text-[var(--color-muteds)]">In-depth analytics and export.</div>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -15,7 +15,7 @@ export default function VendorDetailsPage() {
 
   useEffect(() => {
     axios.get(`/api/v1/manager/vendors/${id}/performance`)
-      .then(res => setVendor(res.data))
+      .then(res => setVendor(res.data.data))
       .catch(err => console.log(err))
       .finally(() => setLoading(false));
   }, [id]);
@@ -27,7 +27,7 @@ export default function VendorDetailsPage() {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 mt-10">
       {/* Vendor Info */}
       <Card className="bg-[var(--color-secondarys)] text-[var(--color-texts)]">
         <CardHeader><CardTitle>Vendor Info</CardTitle></CardHeader>
@@ -68,7 +68,7 @@ export default function VendorDetailsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {vendor.orders.map((o: any) => (
+              {vendor?.orders?.map((o: any) => (
                 <TableRow key={o.id}>
                   <TableCell>{o.id}</TableCell>
                   <TableCell>{o.status}</TableCell>

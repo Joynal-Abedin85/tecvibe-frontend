@@ -11,7 +11,7 @@ export default function SupportTicketsPage() {
 
   useEffect(() => {
     axios.get("/api/v1/manager/support-tickets")
-      .then(res => setTickets(res.data))
+      .then(res => setTickets(res.data.data))
       .catch(err => console.log(err))
       .finally(() => setLoading(false));
   }, []);
@@ -25,7 +25,7 @@ export default function SupportTicketsPage() {
   return (
     <div className="p-4 space-y-4">
       <h1 className="text-2xl font-bold text-[var(--color-primarys)]">Support Tickets</h1>
-      {tickets.map(ticket => (
+      {tickets?.map(ticket => (
         <Card key={ticket.id} className="bg-[var(--color-bgs)] text-[var(--color-texts)]">
           <CardHeader><CardTitle>{ticket.subject}</CardTitle></CardHeader>
           <CardContent>

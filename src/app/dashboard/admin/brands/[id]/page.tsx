@@ -41,7 +41,7 @@ export default function BrandEditPage() {
         await axios.put(`/api/v1/admin/brands/${id}`, { name: item.name, description: item.description });
       }
       alert("Updated");
-      router.push("/api/v1/dashboard/admin/brands");
+      router.push("/dashboard/admin/brands");
     } catch (e) {
       console.error(e);
       alert("Update failed");
@@ -52,7 +52,7 @@ export default function BrandEditPage() {
     if (!confirm("Delete brand?")) return;
     try {
       await axios.delete(`/api/v1/admin/brands/${id}`);
-      router.push("/api/v1/dashboard/admin/brands");
+      router.push("/dashboard/admin/brands");
     } catch (e) {
       console.error(e); alert("Delete failed");
     }

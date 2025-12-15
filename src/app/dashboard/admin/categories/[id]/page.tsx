@@ -33,7 +33,7 @@ export default function CategoryEditPage() {
       setSaving(true);
       await axios.put(`/api/v1/admin/categories/${id}`, { name: item.name, slug: item.slug, description: item.description });
       alert("Updated");
-      router.push("/api/v1/dashboard/admin/categories");
+      router.push("/dashboard/admin/categories");
     } catch (e) {
       console.error(e);
       alert("Update failed");
@@ -44,7 +44,7 @@ export default function CategoryEditPage() {
     if (!confirm("Delete category?")) return;
     try {
       await axios.delete(`/api/v1/admin/categories/${id}`);
-      router.push("/api/v1/dashboard/admin/categories");
+      router.push("/dashboard/admin/categories");
     } catch (e) {
       console.error(e); alert("Delete failed");
     }

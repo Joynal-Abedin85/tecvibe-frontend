@@ -11,7 +11,7 @@ export default function ManagerChatPage() {
 
   useEffect(() => {
     axios.get("/api/v1/manager/chat")
-      .then(res => setMessages(res.data))
+      .then(res => setMessages(res.data.data))
       .catch(err => console.log(err))
       .finally(() => setLoading(false));
   }, []);
@@ -19,7 +19,7 @@ export default function ManagerChatPage() {
   const sendMessage = () => {
     if (!input) return;
     axios.post("/api/v1/manager/chat", { message: input })
-      .then(res => setMessages(prev => [...prev, res.data]))
+      .then(res => setMessages(prev => [...prev, res.data.data]))
       .catch(err => console.log(err));
     setInput("");
   };
@@ -31,9 +31,9 @@ export default function ManagerChatPage() {
   );
 
   return (
-    <div className="flex flex-col h-[80vh] p-4 space-y-2 bg-[var(--color-bgs)] text-[var(--color-texts)]">
+    <div className="flex flex-col mt-8 h-[80vh] p-4 space-y-2 bg-[var(--color-bgs)] text-[var(--color-texts)]">
       <div className="flex-1 overflow-y-auto p-2 border-b border-[var(--color-primarys)]">
-        {messages.map((msg, idx) => (
+        {messages?.map((msg, idx) => (
           <div key={idx} className={`p-2 my-1 rounded ${msg.sender === "manager" ? "bg-[var(--color-accents)] text-black ml-auto" : "bg-[var(--color-secondarys)] text-[var(--color-texts)]"}`}>
             {msg.message}
           </div>

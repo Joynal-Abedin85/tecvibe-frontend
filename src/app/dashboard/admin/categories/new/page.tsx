@@ -17,7 +17,7 @@ export default function CategoryCreatePage() {
     try {
       setLoading(true);
       await axios.post("/api/v1/admin/categories", { name, slug, description });
-      router.push("/api/v1/dashboard/admin/categories");
+      router.push("/dashboard/admin/categories");
     } catch (err) {
       console.error(err);
       alert("Create failed");

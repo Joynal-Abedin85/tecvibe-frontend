@@ -2,28 +2,32 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from "@/lib/axioss";
+import axios from "@/lib/axioss"; // তোমার axios instance
 
-const fields = ["name", "email", "phone"] as const;
+const fields = ["name", "email"] as const;
 type FieldType = typeof fields[number];
 
 export default function CreateManagerPage() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    phone: "",
   });
 
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       setLoading(true);
+
+      // API call
       await axios.post("/api/v1/admin/managers", form);
+
+      // Redirect to managers list page
       router.push("/dashboard/admin/managers");
-    } catch (e) {
+    } catch (error) {
+      console.error(error);
       alert("Failed to create manager");
     } finally {
       setLoading(false);
@@ -44,6 +48,7 @@ export default function CreateManagerPage() {
           <div key={field}>
             <label className="block mb-1 capitalize">{field}</label>
             <input
+              type={field === "email" ? "email" : "text"}
               className="border w-full p-2 rounded"
               value={form[field]}
               onChange={(e) =>
@@ -64,4 +69,3 @@ export default function CreateManagerPage() {
     </div>
   );
 }
-

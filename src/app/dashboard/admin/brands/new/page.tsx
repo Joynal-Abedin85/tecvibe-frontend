@@ -26,7 +26,7 @@ export default function BrandCreatePage() {
       } else {
         await axios.post("/api/v1/admin/brands", { name, description: desc });
       }
-      router.push("/api/v1/dashboard/admin/brands");
+      router.push("/dashboard/admin/brands");
     } catch (err) {
       console.error(err); alert("Create failed");
     } finally { setLoading(false); }

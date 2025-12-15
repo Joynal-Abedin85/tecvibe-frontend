@@ -11,38 +11,51 @@ export default function OrdersByAreaPage() {
   const [loading, setLoading] = useState(true);
   const [updating, setUpdating] = useState<string | null>(null);
 
+  // Fetch orders by manager area
   useEffect(() => {
-    axios.get("/api/v1/manager/orders/area")
-      .then(res => setOrders(res.data))
-      .catch(err => console.log(err))
+    axios
+      .get("/api/v1/manager/orders/area")
+      .then((res) => setOrders(res.data.data))
+      .catch((err) => console.error(err))
       .finally(() => setLoading(false));
   }, []);
 
+  // Assign delivery boy
   const handleAssignDelivery = (orderId: string) => {
     setUpdating(orderId);
-    axios.post(`/api/v1/manager/orders/${orderId}/assign-delivery`)
+    axios
+      .post(`/api/v1/manager/orders/${orderId}/assign-delivery`, {
+        deliveryid: "DELIVERY_BOY_ID_HERE" // Replace with actual selected delivery boy ID
+      })
       .then(() => {
         alert("Delivery Boy Assigned!");
+        // Optional: refresh list
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.error(err))
       .finally(() => setUpdating(null));
   };
 
+  // Report order issue
   const handleReportIssue = (orderId: string) => {
     setUpdating(orderId);
-    axios.put(`/api/v1/manager/orders/${orderId}/issue`)
+    axios
+      .put(`/api/v1/manager/orders/${orderId}/issue`, {
+        issue: "Order Failed" // Optional: send reason
+      })
       .then(() => {
         alert("Issue Reported!");
+        // Optional: refresh list
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.error(err))
       .finally(() => setUpdating(null));
   };
 
-  if (loading) return (
-    <div className="flex justify-center py-20">
-      <Loader2 className="animate-spin w-10 h-10 text-[var(--color-primarys)]" />
-    </div>
-  );
+  if (loading)
+    return (
+      <div className="flex justify-center py-20">
+        <Loader2 className="animate-spin w-10 h-10 text-[var(--color-primarys)]" />
+      </div>
+    );
 
   return (
     <div className="p-4">
@@ -58,7 +71,7 @@ export default function OrdersByAreaPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {orders.map(order => (
+          {orders.map((order) => (
             <TableRow key={order.id}>
               <TableCell>{order.id}</TableCell>
               <TableCell>{order.vendor.shopname}</TableCell>
@@ -89,3 +102,4 @@ export default function OrdersByAreaPage() {
     </div>
   );
 }
+
