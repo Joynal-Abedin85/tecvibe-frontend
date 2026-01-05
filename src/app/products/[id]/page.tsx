@@ -10,10 +10,11 @@ interface Product {
   name: string;
   description?: string;
   price: number;
-  productimages: { url: string }[];
-  category: { name: string };
-  brand: { name: string };
-  verdor: { shopname: string };
+  productimage: { url: string }[];
+  Category: { name: string };
+  Brand: { name: string };
+  Vendor: { shopname: string };
+  stock: number
 }
 
 export default function ProductDetailsPage() {
@@ -88,7 +89,7 @@ const handleAddToWishlist = async () => {
     <div className="max-w-4xl mx-auto p-6 space-y-6">
       <div className="flex flex-col md:flex-row gap-6">
         <div className="flex-1 space-y-4">
-          {product.productimages.map((img, idx) => (
+          {product.productimage.map((img, idx) => (
             <img
               key={idx}
               src={img.url}
@@ -105,13 +106,16 @@ const handleAddToWishlist = async () => {
             <strong>Price:</strong> ${product.price}
           </p>
           <p>
-            <strong>Category:</strong> {product.category.name}
+            <strong>Category:</strong> {product.Category.name}
           </p>
           <p>
-            <strong>Brand:</strong> {product.brand.name}
+            <strong>Brand:</strong> {product.Brand.name}
           </p>
           <p>
-            <strong>Shop:</strong> {product.verdor.shopname}
+            <strong>Shop:</strong> {product.Vendor.shopname}
+          </p>
+          <p>
+            <strong>stock:</strong> {product.stock}
           </p>
 
           <div className="flex gap-4 mt-4">

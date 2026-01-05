@@ -3,12 +3,14 @@
 import { useEffect, useState } from "react";
 import axios from "@/lib/axioss";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Loader2 } from "lucide-react";
+import { Badge, Loader2, Store } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function PendingProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  console.log(products);
 
   // Fetch Pending Products
   const loadPendingProducts = () => {
@@ -57,48 +59,64 @@ export default function PendingProductsPage() {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="text-3xl font-bold mb-4">Pending Products</h1>
+      <h1 className="text-3xl font-bold">Pending Products</h1>
 
       {products.length === 0 && (
-        <p className="text-lg text-muted-foreground">No pending products</p>
+        <p className="text-muted-foreground">No pending products</p>
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
           <Card
             key={product.id}
-            className="bg-[var(--color-bgs)] text-[var(--color-texts)]"
+            className="overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition"
           >
-            <CardHeader>
-              <CardTitle>{product.name}</CardTitle>
+            {/* Image */}
+            <div className="relative">
+              <img
+                src={product.productimage?.[0]?.url}
+                alt={product.name}
+                className="h-44 w-full object-cover"
+              />
+              <Badge className="absolute top-3 right-3 bg-yellow-500">
+                {product.status}
+              </Badge>
+            </div>
+
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg line-clamp-1">
+                {product.name}
+              </CardTitle>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Store className="w-4 h-4" />
+                <span>{product.Vendor?.shopname || "Default Shop"}</span>
+              </div>
             </CardHeader>
 
             <CardContent className="space-y-3">
-              {product.productimages?.[0] && (
-                <img
-                  src={product.productimages[0].url}
-                  className="w-full h-40 object-cover rounded"
-                />
-              )}
-
-              <p>
-                <strong>Vendor:</strong> {product.vendor?.name || "Unknown"}
+              <p className="text-sm text-muted-foreground line-clamp-2">
+                {product.description}
               </p>
 
-              <p>
-                <strong>Price:</strong> ${product.price}
-              </p>
+              <div className="flex justify-between text-sm">
+                <span>
+                  <strong>Price:</strong> ${product.price}
+                </span>
+                <span>
+                  <strong>Stock:</strong> {product.stock}
+                </span>
+              </div>
 
-              <div className="flex  gap-3 mt-4">
+              <div className="flex gap-3 pt-2">
                 <Button
-                  className="bg-green-500 text-white w-full"
+                  className=" bg-green-600 hover:bg-green-700"
                   onClick={() => handleApprove(product.id)}
                 >
                   Approve
                 </Button>
-
                 <Button
-                  className="bg-red-600 text-white w-full"
+                  variant="destructive"
+                  className=""
                   onClick={() => handleReject(product.id)}
                 >
                   Reject

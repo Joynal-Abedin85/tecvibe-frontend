@@ -23,7 +23,7 @@ export default function CheckoutPage() {
   const [loading, setLoading] = useState(false);
 
   const total = cart.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
+    (sum, item) => sum + item.Product.price * item.quantity,
     0
   );
 
@@ -36,7 +36,7 @@ export default function CheckoutPage() {
   useEffect(() => {
     if (total > 0) {
       axios
-        .post("/api/v1/user/create-intent", { amount: total })
+        .post("/api/v1/user/create-intent", { amount: total * 100 })
         .then((res) => setClientSecret(res.data.clientSecret));
     }
   }, [total]);

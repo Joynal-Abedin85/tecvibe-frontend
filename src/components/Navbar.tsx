@@ -57,18 +57,18 @@ export default function Navbar() {
                   className="flex items-center focus:outline-none"
                 >
                   <Image
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmKYnbMo3YvGz1uc3C6TfjyhScEfzqHyeAUg&s"
-                    alt="{user.name}"
-                    width={36}
-                    height={36}
-                    className="rounded-full"
+                    src={user?.image || "/default-avatar.png"}
+                    alt="Profile"
+                    width={40}
+                    height={40}
+                    className="rounded-full object-cover"
                   />
                 </button>
                 {/* Dropdown */}
                 {dropdownOpen && (
                   <div className="absolute right-0 mt-2 w-40 bg-bgs border rounded-lg shadow-lg py-2">
                     <Link
-                       href={dashboardRoutes[user?.role] || "/dashboard/user"}
+                      href={dashboardRoutes[user?.role] || "/dashboard/user"}
                       className="block px-4 py-2 text-sm text-texts hover:bg-primarys hover:text-texts"
                       onClick={() => setDropdownOpen(false)}
                     >

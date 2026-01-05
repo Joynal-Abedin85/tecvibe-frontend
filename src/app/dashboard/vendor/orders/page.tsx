@@ -8,11 +8,15 @@ export default function VendorOrdersPage() {
   const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  console.log("orders:", orders);
+console.log("isArray:", Array.isArray(orders));
+
+
   useEffect(() => {
     axios
       .get("/api/v1/vendor/orders")
       .then((res) => {
-        setOrders(res.data);
+        setOrders(res.data.data);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -38,11 +42,11 @@ export default function VendorOrdersPage() {
           </thead>
 
           <tbody>
-            {orders.map((order) => (
+            {orders?.map((order) => (
               <tr key={order.id} className="border-b">
                 <td className="p-3">{order.id}</td>
-                <td className="p-3">{order.customerName}</td>
-                <td className="p-3">৳{order.totalAmount}</td>
+                <td className="p-3">{order.User.name}</td>
+                <td className="p-3">৳{order.total}</td>
 
                 <td className="p-3">
                   <span

@@ -159,7 +159,7 @@ const handleSubmit = async () => {
       />
 
       {/* IMAGES */}
-      <input
+      <input 
         type="file"
         multiple
         className="mb-3"

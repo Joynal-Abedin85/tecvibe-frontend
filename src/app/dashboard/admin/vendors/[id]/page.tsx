@@ -6,14 +6,17 @@ import { useParams } from "next/navigation";
 
 type Vendor = {
   id: string;
-  shopName: string;
-  ownerName: string;
-  email: string;
-  phone: string;
-  address: string;
-  status: string;
-  createdAt: string;
+  shopname: string;
+  status: "PENDING" | "APPROVED" | "SUSPENDED";
+  area?: string;
+  updatedat: string;
+  User: {
+    name: string;
+    email: string;
+    createdat: string;
+  };
 };
+
 
 export default function VendorDetailsPage() {
   const { id } = useParams();
@@ -25,9 +28,9 @@ export default function VendorDetailsPage() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`/api/admin/vendors/${id}`);
+      const res = await axios.get(`/api/v1/admin/vendors/${id}`);
       setVendor(res.data?.data ?? null);
-    } catch (e) {
+    } catch {
       setErr("Failed to load vendor details");
     } finally {
       setLoading(false);
@@ -38,98 +41,82 @@ export default function VendorDetailsPage() {
     fetchData();
   }, [id]);
 
-  const doAction = async (action: "approve" | "reject" | "suspend") => {
-    if (!confirm(`Are you sure you want to ${action} this vendor?`)) return;
+  const suspendVendor = async () => {
+    if (!confirm("Are you sure you want to suspend this vendor?")) return;
 
     try {
       setProcessing(true);
-      await axios.put(`/api/admin/vendors/${id}/${action}`);
+      await axios.put(`/api/v1/admin/vendors/${id}/suspend`);
       await fetchData();
-    } catch (error) {
-      alert("Action failed!");
+    } catch {
+      alert("Failed to suspend vendor");
     } finally {
       setProcessing(false);
     }
   };
 
   if (loading)
-    return <div className="p-6 text-gray-600 animate-pulse">Loading vendor...</div>;
+    return <div className="p-6 animate-pulse">Loading vendor...</div>;
 
   if (!vendor)
     return <div className="p-6 text-red-600">Vendor not found</div>;
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold text-[var(--color-primarys)] mb-4">
-        Vendor Details
-      </h1>
+    <div className="p-6 max-w-3xl mx-auto space-y-4">
+      <h1 className="text-2xl font-bold">Vendor Details</h1>
 
       {err && <p className="text-red-600">{err}</p>}
 
-      <div className="bg-white shadow rounded p-4 space-y-3">
+      <div className="bg-white rounded shadow p-5 space-y-4">
+        {/* Header */}
         <div>
-          <h2 className="text-xl font-semibold">{vendor.shopName}</h2>
-          <p className="text-[var(--color-muteds)] text-sm">
-            Owner: {vendor.ownerName}
+          <h2 className="text-xl font-semibold">{vendor.shopname}</h2>
+          <p className="text-sm text-gray-500">
+            Owner: {vendor.User.name}
           </p>
         </div>
 
+        {/* Info */}
         <div className="text-sm space-y-1">
           <p>
-            <strong>Email:</strong> {vendor.email}
+            <strong>Email:</strong> {vendor.User.email}
           </p>
           <p>
-            <strong>Phone:</strong> {vendor.phone}
-          </p>
-          <p>
-            <strong>Address:</strong> {vendor.address}
+            <strong>Area:</strong> {vendor.area ?? "N/A"}
           </p>
           <p>
             <strong>Joined:</strong>{" "}
-            {new Date(vendor.createdAt).toLocaleString()}
+            {new Date(vendor.User.createdat).toLocaleDateString()}
+          </p>
+          <p>
+            <strong>Last Updated:</strong>{" "}
+            {new Date(vendor.updatedat).toLocaleDateString()}
           </p>
         </div>
 
-        <div>
-          <span
-            className={`px-3 py-1 text-sm rounded ${
-              vendor.status === "APPROVED"
-                ? "bg-green-100 text-green-700"
-                : vendor.status === "PENDING"
-                ? "bg-yellow-100 text-yellow-700"
-                : "bg-red-100 text-red-700"
-            }`}
-          >
-            {vendor.status}
-          </span>
-        </div>
+        {/* Status */}
+        <span
+          className={`inline-block px-3 py-1 text-sm rounded font-medium ${
+            vendor.status === "APPROVED"
+              ? "bg-green-100 text-green-700"
+              : vendor.status === "PENDING"
+              ? "bg-yellow-100 text-yellow-700"
+              : "bg-red-100 text-red-700"
+          }`}
+        >
+          {vendor.status}
+        </span>
 
-        {/* Action Buttons */}
-        <div className="flex gap-2 pt-4">
+        {/* Action */}
+        {vendor.status !== "SUSPENDED" && (
           <button
             disabled={processing}
-            onClick={() => doAction("approve")}
-            className="px-3 py-2 bg-green-600 text-white rounded"
+            onClick={suspendVendor}
+            className="block w-full mt-4 bg-red-600 text-white py-2 rounded hover:bg-red-700 disabled:opacity-50"
           >
-            Approve
+            Suspend Vendor
           </button>
-
-          <button
-            disabled={processing}
-            onClick={() => doAction("reject")}
-            className="px-3 py-2 bg-red-600 text-white rounded"
-          >
-            Reject
-          </button>
-
-          <button
-            disabled={processing}
-            onClick={() => doAction("suspend")}
-            className="px-3 py-2 bg-yellow-600 text-white rounded"
-          >
-            Suspend
-          </button>
-        </div>
+        )}
       </div>
     </div>
   );

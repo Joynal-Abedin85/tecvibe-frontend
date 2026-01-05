@@ -9,7 +9,7 @@ type Vendor = {
   shopname: string;
   status: string;
   createdAt: string;
-  user: {
+  User: {
     name: string;
     email: string;
     phone: string;
@@ -42,8 +42,8 @@ export default function AllVendorsPage() {
   const filtered = vendors.filter(
     (v) =>
       v.shopname.toLowerCase().includes(search.toLowerCase()) ||
-      v.user.name.toLowerCase().includes(search.toLowerCase()) ||
-      v.user.email.toLowerCase().includes(search.toLowerCase())
+      v.User.name.toLowerCase().includes(search.toLowerCase()) ||
+      v.User.email.toLowerCase().includes(search.toLowerCase())
   );
 
   if (loading)
@@ -99,9 +99,9 @@ export default function AllVendorsPage() {
               filtered.map((v) => (
                 <tr key={v.id} className="border-t">
                   <td className="p-3">{v.shopname}</td>
-                  <td className="p-3">{v.user.name}</td>
-                  <td className="p-3">{v.user.email}</td>
-                  <td className="p-3">{v.user.phone}</td>
+                  <td className="p-3">{v.User.name}</td>
+                  <td className="p-3">{v.User.email}</td>
+                  <td className="p-3">{v.User.phone}</td>
                   <td className="p-3">
                     <span
                       className={`px-2 py-1 rounded text-xs ${

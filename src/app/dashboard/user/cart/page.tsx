@@ -21,10 +21,12 @@ export default function CartPage() {
   // 🔢 total price
   const totalPrice = useMemo(() => {
     return cart.reduce(
-      (sum, item) => sum + item.product.price * item.quantity,
+      (sum, item) => sum + item.Product.price * item.quantity,
       0
     );
   }, [cart]);
+
+  console.log(cart)
 
   // ➕➖ update quantity
   const updateQty = async (id: string, qty: number) => {
@@ -61,7 +63,7 @@ export default function CartPage() {
       {/* cart items */}
       <div className="space-y-4">
         {cart.map((item) => {
-          const product = item.product;
+          const product = item.Product;
           const subtotal = product.price * item.quantity;
 
           return (
@@ -71,7 +73,7 @@ export default function CartPage() {
             >
               {/* image */}
               <img
-                src={product.productimages?.[0]?.url || "/placeholder.jpg"}
+                src={product.productimage?.[0]?.url || "/placeholder.jpg"}
                 className="w-24 h-24 object-cover rounded"
                 alt={product.name}
               />

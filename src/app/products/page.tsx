@@ -8,10 +8,10 @@ interface Product {
   id: string;
   name: string;
   price: number;
-  productimages: { url: string }[];
+  productimage: { url: string }[];
   category: { id: string; name: string };
   brand: { id: string; name: string };
-  verdor: { shopname: string };
+  Vendor: { shopname: string };
 }
 
 interface Category { id: string; name: string }
@@ -61,6 +61,7 @@ export default function ProductsPage() {
   }, [search, filterCategory, filterBrand]);
 
   if (loading) return <div className="text-center py-20">Loading...</div>;
+  console.log(products)
 
   return (
     <div className="max-w-6xl mx-auto p-6">
@@ -98,12 +99,12 @@ export default function ProductsPage() {
             className="border p-4 rounded shadow hover:shadow-lg transition"
           >
             <img
-              src={product.productimages[0]?.url || "/placeholder.jpg"}
+              src={product.productimage[0]?.url || "/placeholder.jpg"}
               alt={product.name}
               className="h-40 w-full object-cover mb-2 rounded"
             />
             <h3 className="font-bold text-lg">{product.name}</h3>
-            <p className="text-sm text-gray-500">{product.verdor.shopname}</p>
+            <p className="text-sm text-gray-500">{product.Vendor.shopname}</p>
             <p className="text-lg font-semibold">${product.price}</p>
           </Link>
         ))}

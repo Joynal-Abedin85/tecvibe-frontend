@@ -1,9 +1,14 @@
 "use client";
 
-import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js";
+import {
+  useStripe,
+  useElements,
+  PaymentElement,
+} from "@stripe/react-stripe-js";
 import axios from "@/lib/axioss";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export default function CheckoutForm({
   cart,
@@ -18,36 +23,62 @@ export default function CheckoutForm({
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async () => {
-    if (!stripe || !elements) return;
+const handleSubmit = async () => {
+  if (!stripe || !elements) {
+    toast.error("Payment system not ready");
+    return;
+  }
 
-    setLoading(true);
+  if (!cart?.length) {
+    toast.warning("Your cart is empty");
+    return;
+  }
 
-    const { error } = await stripe.confirmPayment({
-      elements,
-      redirect: "if_required",
-    });
+  const vendorid = cart[0]?.Product?.vendorid;
+  if (!vendorid) {
+    toast.error("Vendor not found");
+    return;
+  }
 
-    if (error) {
-      alert(error.message);
-      setLoading(false);
-      return;
-    }
+  setLoading(true);
 
-    // PAYMENT SUCCESS → CREATE ORDER
+  // Stripe payment
+  const { error } = await stripe.confirmPayment({
+    elements,
+    redirect: "if_required",
+  });
+
+  if (error) {
+    toast.error(error.message || "Payment failed");
+    setLoading(false);
+    return;
+  }
+
+  try {
     await axios.post("/api/v1/user/orders", {
-      vendorid: cart[0].product.verdorid,
+      vendorid,
       area,
+      address,
       total,
       items: cart.map((i: any) => ({
         productid: i.productid,
         quantity: i.quantity,
-        price: i.product.price,
+        price: i.Product.price,
       })),
     });
 
+    toast.success("Order placed successfully 🎉");
     router.push("/dashboard/user/ordersuccess");
-  };
+  } catch (err: any) {
+    toast.error(
+      err?.response?.data?.message ||
+        "Order creation failed. Please contact support."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="max-w-4xl mx-auto p-6 grid md:grid-cols-2 gap-6">
