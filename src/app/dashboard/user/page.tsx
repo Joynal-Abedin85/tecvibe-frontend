@@ -3,11 +3,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "@/lib/axioss";
+import { useAuth } from "@/app/context/authprovider";
 
 export default function UserDashboard() {
   const [profile, setProfile] = useState<any>(null);
   const [orders, setOrders] = useState([]);
-  console.log(orders)
+    const { user } = useAuth();
+  
+  console.log(profile)
 
   useEffect(() => {
     axios.get("/api/v1/user/profile").then((res) => setProfile(res.data));
@@ -34,7 +37,7 @@ export default function UserDashboard() {
           <h2 className="text-xl font-bold mb-4">Your Profile</h2>
 
           <img
-            src={profile?.avatar || "/avatar.png"}
+            src={user?.image}
             className="h-20 w-20 rounded-full mb-4"
           />
 
