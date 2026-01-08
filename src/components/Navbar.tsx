@@ -12,11 +12,11 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
   const { user, logout } = useAuth();
-  console.log(user);
+  console.log("navuser",user);
 
   const links = [
     { name: "Home", href: "/" },
-    ...(user && user.role === "user" ? [{ name: "Products", href: "/products" }] : []),
+    ...(user && user.role === "USER" ? [{ name: "Products", href: "/products" }] : []),
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
