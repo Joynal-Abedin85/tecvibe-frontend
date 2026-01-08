@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/app/context/authprovider";
 import { dashboardRoutes } from "@/utils/dashroute";
 
@@ -12,6 +12,7 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
   const { user, logout } = useAuth();
+  const router = useRouter()
   console.log("navuser",user);
 
   const links = [
@@ -79,6 +80,7 @@ export default function Navbar() {
                       onClick={() => {
                         setDropdownOpen(false);
                         logout();
+                        router.replace("/login"); 
                       }}
                     >
                       Logout
