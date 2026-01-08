@@ -41,7 +41,7 @@ export default function CategoryGrid() {
           {categories.map((cat, i) => (
             <div
               key={i}
-              className="group cursor-pointer rounded-xl shadow hover:shadow-lg bg-secondarys transition overflow-hidden border border-texts"
+              className="group cursor-pointer rounded-xl shadow hover:shadow-lg bg-secondarys transition overflow-hidden  "
             >
               <div className="relative h-24 md:h-32 w-full">
                 <Image

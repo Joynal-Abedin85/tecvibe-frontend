@@ -103,7 +103,7 @@ export default function FlashSale() {
           {products.map((item) => (
             <div
               key={item.id}
-              className="group bg-secondarys border rounded-xl shadow hover:shadow-lg transition overflow-hidden"
+              className="group bg-secondarys  rounded-xl shadow hover:shadow-lg transition overflow-hidden"
             >
               <div className="relative h-36 md:h-48">
                 <Image
@@ -114,7 +114,7 @@ export default function FlashSale() {
                 />
 
                 {/* Discount Badge */}
-                <span className="absolute top-2 left-2 bg-red-600 text-texts text-xs px-2 py-1 rounded-md shadow">
+                <span className="absolute top-2 left-2 bg-gray-700 text-texts text-xs px-2 py-1 rounded-md shadow">
                   -{Math.floor(
                     ((item.oldPrice - item.price) / item.oldPrice) * 100
                   )}
@@ -127,7 +127,7 @@ export default function FlashSale() {
                   {item.title}
                 </p>
 
-                <p className="text-red-600 font-bold text-lg">
+                <p className="text-gray-700 font-bold text-lg">
                   ৳ {item.price}
                 </p>
 

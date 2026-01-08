@@ -2,7 +2,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getMe } from "../actions/getme";
 import axios from "@/lib/axioss";
-import { useRouter } from "next/router";
 
 interface AuthContextType {
   user: any;

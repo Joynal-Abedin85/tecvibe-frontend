@@ -61,14 +61,15 @@ export default function BrandCarousel() {
           {[...brands, ...brands].map((brand, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-32 h-20 bg-texts border border-texts rounded-xl shadow-sm flex items-center justify-center hover:shadow-md transition"
+              className="flex-shrink-0 w-32 h-20 rounded-xl  flex items-center justify-center hover:shadow-md transition"
             >
               <Image
                 src={brand}
                 alt="brand logo"
                 width={100}
                 height={50}
-                className="object-contain"
+                
+                className="object-contain rounded-2xl"
               />
             </div>
           ))}

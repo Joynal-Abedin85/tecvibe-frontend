@@ -11,7 +11,7 @@ import TopSelling from "@/components/topselling";
 
 export default function HomePage() {
   return (
-    <div className="text-center py-10">
+    <div className="text-center mx-auto py-10 max-w-6xl">
       <HeroBanner></HeroBanner>
       <CategoryGrid></CategoryGrid>
       <FlashSale />
@@ -29,9 +29,7 @@ export default function HomePage() {
       <Testimonials />
 
       <Footer />
-      <p className="text-lg text-gray-600">
-        Shop the best products at the best prices
-      </p>
+    
     </div>
   );
 }

@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "@/lib/axioss";
+import { useAuth } from "../context/authprovider";
+import { useRouter } from "next/navigation";
 
 interface Product {
   id: string;
@@ -21,10 +23,18 @@ export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [brands, setBrands] = useState<Brand[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [Loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [filterCategory, setFilterCategory] = useState("");
   const [filterBrand, setFilterBrand] = useState("");
+  const { user, loading} = useAuth();
+  const router = useRouter();
+
+useEffect(() => {
+  if (!loading && (!user || user.role !== "USER")) {
+    router.replace("/login");
+  }
+}, [user, loading]);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -60,7 +70,7 @@ export default function ProductsPage() {
     fetchProducts();
   }, [search, filterCategory, filterBrand]);
 
-  if (loading) return <div className="text-center py-20">Loading...</div>;
+  if (Loading) return <div className="text-center py-20">Loading...</div>;
   console.log(products)
 
   return (

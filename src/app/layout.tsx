@@ -21,7 +21,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
        <AuthProvider>
          <Navbar />
        
-        <main className="max-w-6xl mt-10 mx-auto p-4">{children}</main>
+        <main className=" mt-10 bg-bgs w-full p-4">{children}</main>
         <Toaster richColors position="top-right" />
        </AuthProvider>
        </GoogleOAuthProvider>
