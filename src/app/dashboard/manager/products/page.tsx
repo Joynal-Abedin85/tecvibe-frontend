@@ -5,6 +5,7 @@ import axios from "@/lib/axioss";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge, Loader2, Store } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export default function PendingProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
@@ -30,11 +31,11 @@ export default function PendingProductsPage() {
   const handleApprove = async (id: string) => {
     try {
       await axios.put(`/api/v1/manager/products/${id}/approve`);
-      alert("Product Approved ✅");
+      toast.success("Product Approved ✅");
       setProducts((prev) => prev.filter((p) => p.id !== id));
     } catch (err) {
       console.error(err);
-      alert("Failed to approve");
+      toast.error("Failed to approve");
     }
   };
 
@@ -42,11 +43,11 @@ export default function PendingProductsPage() {
   const handleReject = async (id: string) => {
     try {
       await axios.put(`/api/v1/manager/products/${id}/reject`);
-      alert("Product Rejected ❌");
+      toast.warning("Product Rejected ❌");
       setProducts((prev) => prev.filter((p) => p.id !== id));
     } catch (err) {
       console.error(err);
-      alert("Failed to reject");
+      toast.error("Failed to reject");
     }
   };
 

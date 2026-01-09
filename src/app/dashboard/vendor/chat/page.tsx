@@ -3,6 +3,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import axios from "@/lib/axioss";
+import { toast } from "sonner";
 
 type Msg = {
   id: string;
@@ -47,7 +48,7 @@ export default function VendorChatPage() {
       fetchMessages();
     } catch (err) {
       console.error(err);
-      alert("Send failed");
+      toast.error("Send failed");
     }
   };
 

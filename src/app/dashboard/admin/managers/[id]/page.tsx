@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "@/lib/axioss";
 import { useParams, useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 type ManagerType = {
   id: string;
@@ -30,7 +31,7 @@ export default function EditManagerPage() {
       const res = await axios.get(`/api/v1/admin/managers/${id}`);
       setManager(res.data?.data);
     } catch {
-      alert("Failed to load manager");
+      toast.error("Failed to load manager");
     } finally {
       setLoading(false);
     }
@@ -49,7 +50,7 @@ export default function EditManagerPage() {
       await axios.put(`/api/v1/admin/managers/${id}`, manager);
       router.push("/dashboard/admin/managers");
     } catch {
-      alert("Update failed");
+      toast.error("Update failed");
     } finally {
       setSaving(false);
     }

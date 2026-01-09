@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "@/lib/axioss";
+import { toast } from "sonner";
 
 export default function BrandCreatePage() {
   const [name, setName] = useState("");
@@ -13,7 +14,7 @@ export default function BrandCreatePage() {
 
   const handleSubmit = async (e:any) => {
     e.preventDefault();
-    if (!name.trim()) { alert("Name required"); return; }
+    if (!name.trim()) { toast.error("Name required"); return; }
 
     try {
       setLoading(true);
@@ -28,7 +29,7 @@ export default function BrandCreatePage() {
       }
       router.push("/dashboard/admin/brands");
     } catch (err) {
-      console.error(err); alert("Create failed");
+      console.error(err); toast.error("Create failed");
     } finally { setLoading(false); }
   };
 

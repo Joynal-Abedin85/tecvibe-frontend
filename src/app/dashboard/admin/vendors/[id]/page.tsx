@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "@/lib/axioss";
 import { useParams } from "next/navigation";
+import { toast } from "sonner";
 
 type Vendor = {
   id: string;
@@ -49,7 +50,7 @@ export default function VendorDetailsPage() {
       await axios.put(`/api/v1/admin/vendors/${id}/suspend`);
       await fetchData();
     } catch {
-      alert("Failed to suspend vendor");
+      toast.error("Failed to suspend vendor");
     } finally {
       setProcessing(false);
     }

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import axios from "@/lib/axioss";
+import { toast } from "sonner";
 
 interface Product {
   id: string;
@@ -32,7 +33,7 @@ export default function EditProductPage() {
         setStock(res.data.stock.toString());
       } catch (err) {
         console.error(err);
-        alert("Failed to fetch product");
+        toast.error("Failed to fetch product");
       } finally {
         setLoading(false);
       }
@@ -53,17 +54,17 @@ const handleUpdate = async () => {
       stock: product.stock,
     });
 
-    alert("Product Updated Successfully!");
+    toast.success("Product Updated Successfully!");
   } catch (err) {
     console.error(err);
-    alert("Failed to update product");
+    toast.error("Failed to update product");
   }
 };
 
 
   // Upload Images
 const handleImageUpload = async () => {
-  if (images.length === 0) return alert("Select images first");
+  if (images.length === 0) return toast.warning("Select images first");
 
   const fd = new FormData();
   images.forEach((img) => fd.append("images", img));
@@ -75,11 +76,11 @@ const handleImageUpload = async () => {
       },
     });
 
-    alert("Images Uploaded Successfully!");
+    toast.success("Images Uploaded Successfully!");
     setImages([]);
   } catch (err) {
     console.error("Image Upload Error:", err);
-    alert("Failed to upload images");
+    toast.error("Failed to upload images");
   }
 };
 
@@ -91,24 +92,24 @@ const handleImageUpload = async () => {
       await axios.put(`/api/v1/vendor/products/${id}/stock`, {
         stock: Number(stock),
       });
-      alert("Stock Updated!");
+      toast.success("Stock Updated!");
     } catch (err) {
       console.error(err);
-      alert("Failed to update stock");
+      toast.error("Failed to update stock");
     }
   };
 
   // Add Offer
   const handleAddOffer = async () => {
     if (!offer.discount || !offer.expiresAt)
-      return alert("Fill discount and expiration date");
+      return toast.error("Fill discount and expiration date");
     try {
       await axios.post(`/api/v1/vendor/products/${id}/offer`, offer);
-      alert("Offer Added!");
+      toast.success("Offer Added!");
       setOffer({ discount: "", expiresAt: "" });
     } catch (err) {
       console.error(err);
-      alert("Failed to add offer");
+      toast.error("Failed to add offer");
     }
   };
 
@@ -117,11 +118,11 @@ const handleImageUpload = async () => {
     if (!confirm("Are you sure?")) return;
     try {
       await axios.delete(`/api/v1/vendor/products/${id}`);
-      alert("Product Deleted");
+      toast.success("Product Deleted");
       router.push("/dashboard/vendor/products");
     } catch (err) {
       console.error(err);
-      alert("Failed to delete product");
+      toast.error("Failed to delete product");
     }
   };
 

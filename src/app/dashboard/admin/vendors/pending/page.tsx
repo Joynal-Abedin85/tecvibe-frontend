@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "@/lib/axioss";
+import { toast } from "sonner";
 
 type Vendor = {
   id: string;
@@ -51,7 +52,7 @@ export default function PendingVendorsPage() {
       await axios.put(`/api/v1/admin/vendors/${id}/approve`);
       await fetchPending();
     } catch (err) {
-      alert("Approve failed");
+      toast.error("Approve failed");
     } finally {
       setProcessing(null);
     }
@@ -65,7 +66,7 @@ export default function PendingVendorsPage() {
       await axios.put(`/api/v1/admin/vendors/${id}/reject`);
       await fetchPending();
     } catch (err) {
-      alert("Reject failed");
+      toast.error("Reject failed");
     } finally {
       setProcessing(null);
     }

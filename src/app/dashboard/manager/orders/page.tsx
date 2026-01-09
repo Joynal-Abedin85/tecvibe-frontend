@@ -5,6 +5,7 @@ import axios from "@/lib/axioss";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export default function OrdersByAreaPage() {
   const [orders, setOrders] = useState<any[]>([]);
@@ -28,7 +29,7 @@ export default function OrdersByAreaPage() {
         deliveryid: "DELIVERY_BOY_ID_HERE" // Replace with actual selected delivery boy ID
       })
       .then(() => {
-        alert("Delivery Boy Assigned!");
+        toast.success("Delivery Boy Assigned!");
         // Optional: refresh list
       })
       .catch((err) => console.error(err))
@@ -43,7 +44,7 @@ export default function OrdersByAreaPage() {
         issue: "Order Failed" // Optional: send reason
       })
       .then(() => {
-        alert("Issue Reported!");
+        toast.success("Issue Reported!");
         // Optional: refresh list
       })
       .catch((err) => console.error(err))

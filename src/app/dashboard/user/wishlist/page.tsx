@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import axios from "@/lib/axioss";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export default function WishlistPage() {
   const [items, setItems] = useState<any[]>([]);
@@ -35,7 +36,7 @@ export default function WishlistPage() {
       productid,
       quantity: 1,
     });
-    alert("Added to cart");
+    toast.success("Added to cart");
     setProcessing(null);
   };
 

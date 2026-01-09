@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import axios from "@/lib/axioss";
+import { toast } from "sonner";
 
 export default function ApplyVendor() {
   const [form, setForm] = useState({ shopName: "", address: "" });
@@ -11,7 +12,7 @@ export default function ApplyVendor() {
     setLoading(true);
     await axios.post("/api/v1/vendor/apply", form);
     setLoading(false);
-    alert("Application submitted!");
+    toast.success("Application submitted!");
   };
 
   return (

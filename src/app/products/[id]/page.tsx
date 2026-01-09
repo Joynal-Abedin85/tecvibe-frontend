@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import axios from "@/lib/axioss";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface Product {
   id: string;
@@ -45,10 +46,10 @@ export default function ProductDetailsPage() {
       });
 
       console.log("Cart added:", res.data);
-      alert("Added to Cart!");
+      toast.success("Added to Cart!");
     } catch (err: any) {
       console.error("Add cart error:", err.response?.data || err);
-      alert("Failed to add to cart");
+      toast.error("Failed to add to cart");
     }
   };
 
@@ -62,7 +63,7 @@ const handleAddToWishlist = async () => {
     });
 
     console.log("wishlist", res.data);
-    alert(res.data.message || "Added to Wishlist!");
+    toast.success(res.data.message || "Added to Wishlist!");
   } catch (err: any) {
     console.error(err);
 
@@ -72,7 +73,7 @@ const handleAddToWishlist = async () => {
 
 
 
-    alert(
+    toast.error(
       err?.response?.data?.message || "Already in wishlist"
     );
   } finally {

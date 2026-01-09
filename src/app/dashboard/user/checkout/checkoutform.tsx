@@ -25,7 +25,7 @@ export default function CheckoutForm({
 
 const handleSubmit = async () => {
   if (!stripe || !elements) {
-    toast.error("Payment system not ready");
+    toast.warning("Payment system not ready");
     return;
   }
 

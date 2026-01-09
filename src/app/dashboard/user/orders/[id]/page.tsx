@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import axios from "@/lib/axioss";
+import { toast } from "sonner";
 
 export default function SingleOrderPage() {
   const { id } = useParams();
@@ -30,22 +31,22 @@ export default function SingleOrderPage() {
   // 🔹 handlers
   const returnOrder = async () => {
     await axios.post(`/api/v1/user/orders/${id}/return`);
-    alert("Return request submitted");
+    toast.success("Return request submitted");
   };
 
   const refundOrder = async () => {
     const res = await axios.get(`/api/v1/user/orders/${id}/refund`);
-    alert(`Refund Status: ${res.data.status}`);
+    toast.success(`Refund Status: ${res.data.status}`);
   };
 
   const cancelOrder = async () => {
     try {
       setLoading(true);
       await axios.post(`/api/v1/user/orders/${id}/cancel`);
-      alert("Order cancelled successfully");
+      toast.success("Order cancelled successfully");
       router.push("/orders"); // redirect after delete
     } catch (err: any) {
-      alert(err.response?.data?.message || "Something went wrong");
+      toast.error(err.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
       setShowModal(false);

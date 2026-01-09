@@ -6,7 +6,7 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen px-6 py-16 bg-gray-50 text-gray-800">
+    <main className="min-h-screen px-6 py-16 bg-bgs text-gray-800">
       <section className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
 

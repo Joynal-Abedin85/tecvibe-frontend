@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "@/lib/axioss"; // তোমার axios instance
+import { toast } from "sonner";
 
 const fields = ["name", "email"] as const;
 type FieldType = typeof fields[number];
@@ -28,7 +29,7 @@ export default function CreateManagerPage() {
       router.push("/dashboard/admin/managers");
     } catch (error) {
       console.error(error);
-      alert("Failed to create manager");
+      toast.error("Failed to create manager");
     } finally {
       setLoading(false);
     }

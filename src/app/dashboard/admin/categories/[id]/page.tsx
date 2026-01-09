@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import axios from "@/lib/axioss";
+import { toast } from "sonner";
 
 export default function CategoryEditPage() {
   const { id } = useParams();
@@ -19,7 +20,7 @@ export default function CategoryEditPage() {
       setItem(res.data?.data ?? res.data);
     } catch (e) {
       console.error(e);
-      alert("Load failed");
+      toast.error("Load failed");
     } finally {
       setLoading(false);
     }
@@ -28,15 +29,15 @@ export default function CategoryEditPage() {
   useEffect(()=>{ fetchItem(); }, [id]);
 
   const handleUpdate = async () => {
-    if (!item?.name?.trim()) { alert("Name required"); return; }
+    if (!item?.name?.trim()) { toast.error("Name required"); return; }
     try {
       setSaving(true);
       await axios.put(`/api/v1/admin/categories/${id}`, { name: item.name, slug: item.slug, description: item.description });
-      alert("Updated");
+      toast.success("Updated");
       router.push("/dashboard/admin/categories");
     } catch (e) {
       console.error(e);
-      alert("Update failed");
+      toast.error("Update failed");
     } finally { setSaving(false); }
   };
 
@@ -46,7 +47,7 @@ export default function CategoryEditPage() {
       await axios.delete(`/api/v1/admin/categories/${id}`);
       router.push("/dashboard/admin/categories");
     } catch (e) {
-      console.error(e); alert("Delete failed");
+      console.error(e); toast.error("Delete failed");
     }
   };
 

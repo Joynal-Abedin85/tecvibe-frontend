@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "@/lib/axioss";
+import { toast } from "sonner";
 
 export default function ProfilePage() {
   const [user, setUser] = useState<any>(null);
@@ -11,7 +12,7 @@ export default function ProfilePage() {
 
   const updateProfile = async () => {
     await axios.put("/api/v1/user/profile", user);
-    alert("Profile Updated");
+    toast.success("Profile Updated");
   };
 
   if (!user) return <p>Loading...</p>;

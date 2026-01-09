@@ -54,7 +54,7 @@ export default function MegaDeals() {
   };
 
   return (
-    <section className="w-full py-12 bg-bgs">
+    <section className="w-full py-12 bg-bgs/10">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
 
         {/* Header */}
@@ -70,7 +70,7 @@ export default function MegaDeals() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 gap-6">
           {deals.map((item) => {
             const discount =
               Math.round(((item.oldPrice - item.newPrice) / item.oldPrice) * 100);
@@ -78,7 +78,7 @@ export default function MegaDeals() {
             return (
               <div
                 key={item.id}
-                className="bg-bgs rounded-xl shadow-md p-4 hover:shadow-lg transition border border-accents"
+                className="bg-bgs/30 rounded-xl shadow-md p-4 hover:shadow-lg transition  "
               >
                 <div className="relative w-full h-32 sm:h-40 mb-4 rounded-lg overflow-hidden">
                   <Image

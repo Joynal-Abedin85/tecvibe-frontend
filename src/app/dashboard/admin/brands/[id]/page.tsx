@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import axios from "@/lib/axioss";
+import { toast } from "sonner";
 
 export default function BrandEditPage() {
   const { id } = useParams();
@@ -20,14 +21,14 @@ export default function BrandEditPage() {
       setItem(res.data?.data ?? res.data);
     } catch (e) {
       console.error(e);
-      alert("Load failed");
+      toast.error("Load failed");
     } finally { setLoading(false); }
   };
 
   useEffect(()=>{ fetchBrand(); }, [id]);
 
   const handleUpdate = async () => {
-    if (!item?.name?.trim()) { alert("Name required"); return; }
+    if (!item?.name?.trim()) { toast.error("Name required"); return; }
 
     try {
       setSaving(true);
@@ -40,11 +41,11 @@ export default function BrandEditPage() {
       } else {
         await axios.put(`/api/v1/admin/brands/${id}`, { name: item.name, description: item.description });
       }
-      alert("Updated");
+      toast.success("Updated");
       router.push("/dashboard/admin/brands");
     } catch (e) {
       console.error(e);
-      alert("Update failed");
+      toast.error("Update failed");
     } finally { setSaving(false); }
   };
 
@@ -54,7 +55,7 @@ export default function BrandEditPage() {
       await axios.delete(`/api/v1/admin/brands/${id}`);
       router.push("/dashboard/admin/brands");
     } catch (e) {
-      console.error(e); alert("Delete failed");
+      console.error(e); toast.error("Delete failed");
     }
   };
 

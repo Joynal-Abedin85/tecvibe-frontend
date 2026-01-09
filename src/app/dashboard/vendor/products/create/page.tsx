@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "@/lib/axioss";
+import { toast } from "sonner";
 
 export default function CreateProductPage() {
   const [form, setForm] = useState({
@@ -42,7 +43,7 @@ export default function CreateProductPage() {
 
 const handleSubmit = async () => {
   if (!form.name || !form.price || !form.stock || !form.categoryid || !form.brandid) {
-    alert("Please fill all required fields");
+    toast.error("Please fill all required fields");
     return;
   }
 
@@ -70,20 +71,20 @@ const handleSubmit = async () => {
     });
 
     console.log("Response:", res.data);
-    alert("Product Created Successfully!");
+    toast.success("Product Created Successfully!");
     setForm({ name: "", price: "", stock: "", description: "", categoryid: "", brandid: "" });
     setImages([]);
   } catch (err: any) {
     // 🔹 Debug: show full error object
     if (err.response) {
       console.error("Error Response:", err.response.data);
-      alert("Failed to create product: " + JSON.stringify(err.response.data));
+      toast.error("Failed to create product: " + JSON.stringify(err.response.data));
     } else if (err.request) {
       console.error("Error Request:", err.request);
-      alert("Failed to create product: No response from server");
+      toast.error("Failed to create product: No response from server");
     } else {
       console.error("Error Message:", err.message);
-      alert("Failed to create product: " + err.message);
+      toast.error("Failed to create product: " + err.message);
     }
   } finally {
     setLoading(false);

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "@/lib/axioss";
+import { toast } from "sonner";
 
 export default function CategoryCreatePage() {
   const [name, setName] = useState("");
@@ -13,14 +14,14 @@ export default function CategoryCreatePage() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (!name.trim()) { alert("Name is required"); return; }
+    if (!name.trim()) { toast.error("Name is required"); return; }
     try {
       setLoading(true);
       await axios.post("/api/v1/admin/categories", { name, slug, description });
       router.push("/dashboard/admin/categories");
     } catch (err) {
       console.error(err);
-      alert("Create failed");
+      toast.error("Create failed");
     } finally {
       setLoading(false);
     }
