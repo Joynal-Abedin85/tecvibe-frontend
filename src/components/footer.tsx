@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -15,13 +15,13 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex items-center justify-center gap-4 mt-4">
             {/* Facebook */}
-            <a className="hover:text-primarys transition">
+            <a href="https://www.facebook.com/md.tareq.48930"  className="hover:text-primarys transition">
               <Facebook size={22} />
             </a>
-            <a className="hover:text-primarys transition">
-              <Instagram size={22} />
+            <a href="https://www.linkedin.com/in/joynal-abedin-web-dev/" className="hover:text-primarys transition">
+              <Linkedin size={22} />
             </a>
-            <a className="hover:text-primarys transition">
+            <a href="https://www.linkedin.com/in/joynal-abedin-web-dev/"  className="hover:text-primarys transition">
               <Youtube size={22} />
             </a>
           </div>
@@ -34,17 +34,17 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2 text-texts/80">
             <li>
-              <a href="#" className="hover:text-primarys transition">
+              <a href="/about" className="hover:text-primarys transition">
                 About Us
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-primarys transition">
+              <a href="/contact" className="hover:text-primarys transition">
                 Contact
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-primarys transition">
+              <a href="/offers" className="hover:text-primarys transition">
                 Offers & Deals
               </a>
             </li>
