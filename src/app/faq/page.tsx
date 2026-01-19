@@ -51,7 +51,7 @@ export default function FAQPage() {
   const [openId, setOpenId] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-10 md:px-10">
+    <div className="min-h-screen  px-4 py-10 md:px-10">
       {/* Header */}
       <div className="mb-10 text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900">❓ Frequently Asked Questions</h1>

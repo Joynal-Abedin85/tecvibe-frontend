@@ -49,12 +49,12 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-primarys transition">
+              <a href="/blog" className="hover:text-primarys transition">
                 Blog
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-primarys transition">
+              <a href="/faq" className="hover:text-primarys transition">
                 FAQ
               </a>
             </li>
@@ -83,12 +83,12 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-primarys transition">
+              <a href="/privacy" className="hover:text-primarys transition">
                 Privacy Policy
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-primarys transition">
+              <a href="/terms" className="hover:text-primarys transition">
                 Terms & Conditions
               </a>
             </li>
