@@ -9,7 +9,7 @@ type ManagerType = {
   id: string;
   userid: string;
   area?: string;
-  user: {
+  User: {
     name: string;
     email: string;
     phone: string;
@@ -29,6 +29,7 @@ export default function EditManagerPage() {
   const fetchData = async () => {
     try {
       const res = await axios.get(`/api/v1/admin/managers/${id}`);
+      console.log(res)
       setManager(res.data?.data);
     } catch {
       toast.error("Failed to load manager");
@@ -48,6 +49,8 @@ export default function EditManagerPage() {
     try {
       setSaving(true);
       await axios.put(`/api/v1/admin/managers/${id}`, manager);
+            toast.success("Update success");
+
       router.push("/dashboard/admin/managers");
     } catch {
       toast.error("Update failed");
@@ -60,6 +63,8 @@ export default function EditManagerPage() {
     if (!confirm("Delete this manager?")) return;
 
     await axios.delete(`/api/v1/admin/managers/${id}`);
+          toast.success("delete success");
+
     router.push("/dashboard/admin/managers");
   };
 
@@ -80,14 +85,14 @@ export default function EditManagerPage() {
 
             <input
               className="border w-full p-2 rounded"
-              value={manager?.user?.[field] ?? ""}
+              value={manager?.User?.[field] ?? ""}
               onChange={(e) =>
                 setManager((prev) =>
                   prev
                     ? {
                         ...prev,
                         user: {
-                          ...prev.user,
+                          ...prev.User,
                           [field]: e.target.value,
                         },
                       }

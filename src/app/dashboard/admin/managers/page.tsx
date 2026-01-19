@@ -14,7 +14,8 @@ export default function ManagersListPage() {
     try {
       setLoading(true);
       const res = await axios.get("/api/v1/admin/managers");
-      setItems(Array.isArray(res.data?.data) ? res.data.data : []);
+      console.log(res)
+      setItems(Array.isArray(res.data?.managers) ? res.data.managers : []);
     } catch (e) {
       setErr("Failed to load managers");
     } finally {
@@ -26,9 +27,9 @@ export default function ManagersListPage() {
     fetchManagers();
   }, []);
 
-  const filtered = items.filter((m:any) =>
-    m.name.toLowerCase().includes(q.toLowerCase())
-  );
+const filtered = items.filter((m: any) =>
+  m.name?.toLowerCase().includes(q.toLowerCase())
+);
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
@@ -86,13 +87,15 @@ export default function ManagersListPage() {
             </thead>
 
             <tbody>
-              {filtered.map((m:any) => (
+              {filtered.map((m: any) => (
                 <tr key={m.id} className="border-t">
                   <td className="p-3">{m.name}</td>
                   <td className="p-3">{m.email}</td>
-                  <td className="p-3 hidden md:table-cell">{m.phone}</td>
+                  <td className="p-3 hidden md:table-cell">
+                    {m.User?.phone || "-"}
+                  </td>
                   <td className="p-3 hidden lg:table-cell">
-                    {new Date(m.createdAt).toLocaleDateString()}
+                    {new Date(m.User?.createdAt).toLocaleDateString()}
                   </td>
                   <td className="p-3 text-right">
                     <Link

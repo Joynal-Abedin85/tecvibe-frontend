@@ -24,6 +24,7 @@ export default function CreateManagerPage() {
 
       // API call
       await axios.post("/api/v1/admin/managers", form);
+      toast.success(" create manager");
 
       // Redirect to managers list page
       router.push("/dashboard/admin/managers");
